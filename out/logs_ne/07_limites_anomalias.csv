@@ -1,0 +1,5 @@
+limite,valor
+razao_manual_vs_votos_ult60 p95 ctrl,2.60434299895507
+max_run_manual p95 ctrl,3.0
+max_manual_15min p95 ctrl,4.0
+gap_mediano_ult60_s p5 ctrl,81.0

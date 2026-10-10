@@ -1,0 +1,18 @@
+# Dados brutos e intermediários (~100 GB). Regenerados pelos scripts; ver docs/REPRODUCAO.md
+data/
+
+# Arquivos por habilitação das amostras (12 e 39 MB); regenerados por `logs_urna.py parsear`
+out/logs/01_eleitores.csv
+out/logs_ne/01_eleitores.csv
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Editores e sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

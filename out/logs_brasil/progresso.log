@@ -1,0 +1,573 @@
+19:33:47 [RR] 1519 urnas, 16 conexões
+19:35:05 [RR] 1000/1519 (66%) 1.3 min, 12.8 urnas/s, falhas 0
+19:35:45 [RR] 1519/1519 (100%) 2.0 min, 12.9 urnas/s, falhas 0
+19:35:45 [RR] concluída: 1519 urnas em 2.0 min, 0 falhas; comp bate 1519/1519, manual bate 1496/1519
+19:35:45 varredura concluída
+19:36:01 [ZZ] 1309 urnas, 32 conexões
+19:37:00 [ZZ] 1000/1309 (76%) 1.0 min, 17.0 urnas/s, falhas 15
+19:37:26 [ZZ] 1309/1309 (100%) 1.4 min, 15.3 urnas/s, falhas 28
+19:37:27 [ZZ] concluída: 1281 urnas em 1.4 min, 28 falhas; comp bate 1281/1281, manual bate 1281/1281
+19:37:27 [RR] já processada, pulando
+19:37:27 [AP] 1914 urnas, 32 conexões
+19:39:16 [AP] 1000/1914 (52%) 1.8 min, 9.1 urnas/s, falhas 0
+19:40:51 [AP] 1914/1914 (100%) 3.4 min, 9.4 urnas/s, falhas 0
+19:40:51 [AP] concluída: 1914 urnas em 3.4 min, 0 falhas; comp bate 1914/1914, manual bate 1878/1914
+19:40:52 [AC] 2270 urnas, 32 conexões
+19:42:33 [AC] 1000/2270 (44%) 1.7 min, 9.9 urnas/s, falhas 0
+19:44:10 [AC] 2000/2270 (88%) 3.3 min, 10.1 urnas/s, falhas 0
+19:44:36 [AC] 2270/2270 (100%) 3.7 min, 10.1 urnas/s, falhas 0
+19:44:36 [AC] concluída: 2270 urnas em 3.7 min, 0 falhas; comp bate 2270/2270, manual bate 2244/2270
+19:44:37 [TO] 4384 urnas, 32 conexões
+19:46:20 [TO] 1000/4384 (23%) 1.7 min, 9.7 urnas/s, falhas 0
+19:47:56 [TO] 2000/4384 (46%) 3.3 min, 10.0 urnas/s, falhas 0
+19:49:29 [TO] 3000/4384 (68%) 4.9 min, 10.3 urnas/s, falhas 0
+19:51:02 [TO] 4000/4384 (91%) 6.4 min, 10.4 urnas/s, falhas 0
+19:51:38 [TO] 4384/4384 (100%) 7.0 min, 10.4 urnas/s, falhas 0
+19:51:39 [TO] concluída: 4384 urnas em 7.0 min, 0 falhas; comp bate 4384/4384, manual bate 4329/4384
+19:51:39 [RO] 4698 urnas, 32 conexões
+19:53:13 [RO] 1000/4698 (21%) 1.6 min, 10.6 urnas/s, falhas 0
+19:54:44 [RO] 2000/4698 (43%) 3.1 min, 10.8 urnas/s, falhas 0
+19:56:15 [RO] 3000/4698 (64%) 4.6 min, 10.9 urnas/s, falhas 0
+19:57:45 [RO] 4000/4698 (85%) 6.1 min, 10.9 urnas/s, falhas 0
+19:58:50 [RO] 4698/4698 (100%) 7.2 min, 10.9 urnas/s, falhas 0
+19:58:51 [RO] concluída: 4698 urnas em 7.2 min, 0 falhas; comp bate 4698/4698, manual bate 4621/4698
+19:58:51 [SE] 5923 urnas, 32 conexões
+20:00:35 [SE] 1000/5923 (17%) 1.7 min, 9.6 urnas/s, falhas 0
+20:02:20 [SE] 2000/5923 (34%) 3.5 min, 9.6 urnas/s, falhas 0
+20:04:04 [SE] 3000/5923 (51%) 5.2 min, 9.6 urnas/s, falhas 0
+20:05:47 [SE] 4000/5923 (68%) 6.9 min, 9.6 urnas/s, falhas 0
+20:07:31 [SE] 5000/5923 (84%) 8.7 min, 9.6 urnas/s, falhas 0
+20:09:05 [SE] 5923/5923 (100%) 10.2 min, 9.7 urnas/s, falhas 0
+20:09:05 [SE] concluída: 5923 urnas em 10.2 min, 0 falhas; comp bate 5923/5923, manual bate 5811/5923
+20:09:05 [DF] 6969 urnas, 32 conexões
+20:10:53 [DF] 1000/6969 (14%) 1.8 min, 9.3 urnas/s, falhas 0
+20:12:36 [DF] 2000/6969 (29%) 3.5 min, 9.5 urnas/s, falhas 0
+20:14:21 [DF] 3000/6969 (43%) 5.3 min, 9.5 urnas/s, falhas 0
+20:16:06 [DF] 4000/6969 (57%) 7.0 min, 9.5 urnas/s, falhas 0
+20:17:51 [DF] 5000/6969 (72%) 8.8 min, 9.5 urnas/s, falhas 0
+20:19:34 [DF] 6000/6969 (86%) 10.5 min, 9.5 urnas/s, falhas 0
+20:21:14 [DF] 6969/6969 (100%) 12.1 min, 9.6 urnas/s, falhas 0
+20:21:15 [DF] concluída: 6969 urnas em 12.2 min, 0 falhas; comp bate 6969/6969, manual bate 6807/6969
+20:21:15 [AL] 7101 urnas, 32 conexões
+20:23:17 [AL] 1000/7101 (14%) 2.0 min, 8.2 urnas/s, falhas 0
+20:25:13 [AL] 2000/7101 (28%) 4.0 min, 8.4 urnas/s, falhas 0
+20:27:11 [AL] 3000/7101 (42%) 5.9 min, 8.4 urnas/s, falhas 0
+20:29:07 [AL] 4000/7101 (56%) 7.9 min, 8.5 urnas/s, falhas 0
+20:31:04 [AL] 5000/7101 (70%) 9.8 min, 8.5 urnas/s, falhas 0
+20:32:59 [AL] 6000/7101 (84%) 11.7 min, 8.5 urnas/s, falhas 0
+20:34:53 [AL] 7000/7101 (99%) 13.6 min, 8.6 urnas/s, falhas 0
+20:35:04 [AL] 7101/7101 (100%) 13.8 min, 8.6 urnas/s, falhas 0
+20:35:05 [AL] concluída: 7101 urnas em 13.8 min, 0 falhas; comp bate 7101/7101, manual bate 6952/7101
+20:35:06 [MS] 7106 urnas, 32 conexões
+20:36:42 [MS] 1000/7106 (14%) 1.6 min, 10.3 urnas/s, falhas 0
+20:38:16 [MS] 2000/7106 (28%) 3.2 min, 10.5 urnas/s, falhas 0
+20:39:48 [MS] 3000/7106 (42%) 4.7 min, 10.6 urnas/s, falhas 0
+20:41:21 [MS] 4000/7106 (56%) 6.3 min, 10.7 urnas/s, falhas 0
+20:42:52 [MS] 5000/7106 (70%) 7.8 min, 10.7 urnas/s, falhas 0
+20:44:24 [MS] 6000/7106 (84%) 9.3 min, 10.7 urnas/s, falhas 0
+20:45:57 [MS] 7000/7106 (99%) 10.8 min, 10.8 urnas/s, falhas 0
+20:46:06 [MS] 7106/7106 (100%) 11.0 min, 10.8 urnas/s, falhas 0
+20:46:06 [MS] concluída: 7106 urnas em 11.0 min, 0 falhas; comp bate 7106/7106, manual bate 7011/7106
+20:46:07 [RN] 8115 urnas, 32 conexões
+20:48:03 [RN] 1000/8115 (12%) 1.9 min, 8.6 urnas/s, falhas 0
+20:49:56 [RN] 2000/8115 (25%) 3.8 min, 8.7 urnas/s, falhas 0
+20:51:49 [RN] 3000/8115 (37%) 5.7 min, 8.8 urnas/s, falhas 0
+20:53:44 [RN] 4000/8115 (49%) 7.6 min, 8.8 urnas/s, falhas 0
+20:55:39 [RN] 5000/8115 (62%) 9.5 min, 8.7 urnas/s, falhas 0
+20:57:34 [RN] 6000/8115 (74%) 11.5 min, 8.7 urnas/s, falhas 0
+20:59:29 [RN] 7000/8115 (86%) 13.4 min, 8.7 urnas/s, falhas 0
+21:01:25 [RN] 8000/8115 (99%) 15.3 min, 8.7 urnas/s, falhas 0
+21:01:38 [RN] 8115/8115 (100%) 15.5 min, 8.7 urnas/s, falhas 0
+21:01:38 [RN] concluída: 8115 urnas em 15.5 min, 0 falhas; comp bate 8114/8115, manual bate 7944/8115
+21:01:38 [AM] 8157 urnas, 32 conexões
+21:03:33 [AM] 1000/8157 (12%) 1.9 min, 8.8 urnas/s, falhas 0
+21:05:23 [AM] 2000/8157 (25%) 3.7 min, 8.9 urnas/s, falhas 0
+21:07:13 [AM] 3000/8157 (37%) 5.6 min, 9.0 urnas/s, falhas 0
+21:09:04 [AM] 4000/8157 (49%) 7.4 min, 9.0 urnas/s, falhas 0
+21:10:54 [AM] 5000/8157 (61%) 9.3 min, 9.0 urnas/s, falhas 0
+21:12:45 [AM] 6000/8157 (74%) 11.1 min, 9.0 urnas/s, falhas 0
+21:14:36 [AM] 7000/8157 (86%) 13.0 min, 9.0 urnas/s, falhas 0
+21:16:26 [AM] 8000/8157 (98%) 14.8 min, 9.0 urnas/s, falhas 0
+21:16:42 [AM] 8157/8157 (100%) 15.1 min, 9.0 urnas/s, falhas 0
+21:16:43 [AM] concluída: 8157 urnas em 15.1 min, 0 falhas; comp bate 8157/8157, manual bate 8000/8157
+21:16:43 [MT] 8287 urnas, 32 conexões
+21:18:29 [MT] 1000/8287 (12%) 1.8 min, 9.4 urnas/s, falhas 0
+21:20:11 [MT] 2000/8287 (24%) 3.5 min, 9.6 urnas/s, falhas 0
+21:21:53 [MT] 3000/8287 (36%) 5.2 min, 9.7 urnas/s, falhas 0
+21:23:36 [MT] 4000/8287 (48%) 6.9 min, 9.7 urnas/s, falhas 0
+21:25:19 [MT] 5000/8287 (60%) 8.6 min, 9.7 urnas/s, falhas 0
+21:27:02 [MT] 6000/8287 (72%) 10.3 min, 9.7 urnas/s, falhas 0
+21:28:45 [MT] 7000/8287 (84%) 12.0 min, 9.7 urnas/s, falhas 0
+21:30:28 [MT] 8000/8287 (97%) 13.8 min, 9.7 urnas/s, falhas 0
+21:31:00 [MT] 8287/8287 (100%) 14.3 min, 9.7 urnas/s, falhas 0
+21:31:00 [MT] concluída: 8287 urnas em 14.3 min, 0 falhas; comp bate 8287/8287, manual bate 8145/8287
+21:31:01 [ES] 9844 urnas, 32 conexões
+21:32:52 [ES] 1000/9844 (10%) 1.9 min, 9.0 urnas/s, falhas 0
+21:34:33 [ES] 2000/9844 (20%) 3.5 min, 9.4 urnas/s, falhas 0
+21:36:12 [ES] 3000/9844 (30%) 5.2 min, 9.6 urnas/s, falhas 0
+21:37:50 [ES] 4000/9844 (41%) 6.8 min, 9.8 urnas/s, falhas 0
+21:39:35 [ES] 5000/9844 (51%) 8.6 min, 9.7 urnas/s, falhas 0
+21:41:14 [ES] 6000/9844 (61%) 10.2 min, 9.8 urnas/s, falhas 0
+21:42:53 [ES] 7000/9844 (71%) 11.9 min, 9.8 urnas/s, falhas 0
+21:44:31 [ES] 8000/9844 (81%) 13.5 min, 9.9 urnas/s, falhas 0
+21:46:15 [ES] 9000/9844 (91%) 15.2 min, 9.8 urnas/s, falhas 0
+21:47:38 [ES] 9844/9844 (100%) 16.6 min, 9.9 urnas/s, falhas 0
+21:47:38 [ES] concluída: 9844 urnas em 16.6 min, 0 falhas; comp bate 9843/9844, manual bate 9625/9844
+21:47:39 [PI] 10225 urnas, 32 conexões
+21:49:19 [PI] 1000/10225 (10%) 1.7 min, 9.9 urnas/s, falhas 0
+21:50:57 [PI] 2000/10225 (20%) 3.3 min, 10.1 urnas/s, falhas 0
+21:52:36 [PI] 3000/10225 (29%) 5.0 min, 10.1 urnas/s, falhas 0
+21:54:12 [PI] 4000/10225 (39%) 6.6 min, 10.2 urnas/s, falhas 0
+21:55:50 [PI] 5000/10225 (49%) 8.2 min, 10.2 urnas/s, falhas 0
+21:57:29 [PI] 6000/10225 (59%) 9.8 min, 10.2 urnas/s, falhas 0
+21:59:06 [PI] 7000/10225 (68%) 11.5 min, 10.2 urnas/s, falhas 0
+22:00:44 [PI] 8000/10225 (78%) 13.1 min, 10.2 urnas/s, falhas 0
+22:02:22 [PI] 9000/10225 (88%) 14.7 min, 10.2 urnas/s, falhas 0
+22:04:02 [PI] 10000/10225 (98%) 16.4 min, 10.2 urnas/s, falhas 0
+22:04:23 [PI] 10225/10225 (100%) 16.7 min, 10.2 urnas/s, falhas 0
+22:04:24 [PI] concluída: 10225 urnas em 16.8 min, 0 falhas; comp bate 10225/10225, manual bate 10026/10225
+22:04:24 [PB] 10712 urnas, 32 conexões
+22:06:14 [PB] 1000/10712 (9%) 1.8 min, 9.1 urnas/s, falhas 0
+22:08:01 [PB] 2000/10712 (19%) 3.6 min, 9.2 urnas/s, falhas 0
+22:09:52 [PB] 3000/10712 (28%) 5.5 min, 9.2 urnas/s, falhas 0
+22:11:49 [PB] 4000/10712 (37%) 7.4 min, 9.0 urnas/s, falhas 0
+22:13:47 [PB] 5000/10712 (47%) 9.4 min, 8.9 urnas/s, falhas 0
+22:15:48 [PB] 6000/10712 (56%) 11.4 min, 8.8 urnas/s, falhas 0
+22:17:51 [PB] 7000/10712 (65%) 13.4 min, 8.7 urnas/s, falhas 0
+22:19:48 [PB] 8000/10712 (75%) 15.4 min, 8.7 urnas/s, falhas 0
+22:21:45 [PB] 9000/10712 (84%) 17.3 min, 8.7 urnas/s, falhas 0
+22:23:43 [PB] 10000/10712 (93%) 19.3 min, 8.6 urnas/s, falhas 0
+22:25:22 [PB] 10712/10712 (100%) 21.0 min, 8.5 urnas/s, falhas 0
+22:25:23 [PB] concluída: 10712 urnas em 21.0 min, 0 falhas; comp bate 10712/10712, manual bate 10458/10712
+22:25:23 [GO] 15686 urnas, 32 conexões
+22:27:20 [GO] 1000/15686 (6%) 1.9 min, 8.6 urnas/s, falhas 0
+22:29:31 [GO] 2000/15686 (13%) 4.1 min, 8.1 urnas/s, falhas 0
+22:31:40 [GO] 3000/15686 (19%) 6.3 min, 8.0 urnas/s, falhas 0
+22:33:34 [GO] 4000/15686 (26%) 8.2 min, 8.2 urnas/s, falhas 0
+22:35:27 [GO] 5000/15686 (32%) 10.1 min, 8.3 urnas/s, falhas 0
+22:37:21 [GO] 6000/15686 (38%) 12.0 min, 8.4 urnas/s, falhas 0
+22:39:14 [GO] 7000/15686 (45%) 13.8 min, 8.4 urnas/s, falhas 0
+22:41:08 [GO] 8000/15686 (51%) 15.7 min, 8.5 urnas/s, falhas 0
+22:43:02 [GO] 9000/15686 (57%) 17.6 min, 8.5 urnas/s, falhas 0
+22:44:54 [GO] 10000/15686 (64%) 19.5 min, 8.5 urnas/s, falhas 0
+22:46:45 [GO] 11000/15686 (70%) 21.4 min, 8.6 urnas/s, falhas 0
+22:48:31 [GO] 12000/15686 (77%) 23.1 min, 8.6 urnas/s, falhas 0
+22:50:21 [GO] 13000/15686 (83%) 25.0 min, 8.7 urnas/s, falhas 0
+22:52:21 [GO] 14000/15686 (89%) 27.0 min, 8.7 urnas/s, falhas 0
+22:54:19 [GO] 15000/15686 (96%) 28.9 min, 8.6 urnas/s, falhas 0
+22:55:47 [GO] 15686/15686 (100%) 30.4 min, 8.6 urnas/s, falhas 0
+22:55:49 [GO] concluída: 15686 urnas em 30.4 min, 0 falhas; comp bate 15686/15686, manual bate 15431/15686
+22:55:50 [SC] 17326 urnas, 32 conexões
+22:58:03 [SC] 1000/17326 (6%) 2.2 min, 7.5 urnas/s, falhas 0
+23:00:13 [SC] 2000/17326 (12%) 4.4 min, 7.6 urnas/s, falhas 0
+23:02:22 [SC] 3000/17326 (17%) 6.5 min, 7.6 urnas/s, falhas 0
+23:04:31 [SC] 4000/17326 (23%) 8.7 min, 7.7 urnas/s, falhas 0
+23:06:37 [SC] 5000/17326 (29%) 10.8 min, 7.7 urnas/s, falhas 0
+23:08:54 [SC] 6000/17326 (35%) 13.1 min, 7.6 urnas/s, falhas 0
+23:10:59 [SC] 7000/17326 (40%) 15.1 min, 7.7 urnas/s, falhas 0
+23:13:02 [SC] 8000/17326 (46%) 17.2 min, 7.7 urnas/s, falhas 0
+23:15:04 [SC] 9000/17326 (52%) 19.2 min, 7.8 urnas/s, falhas 0
+23:17:04 [SC] 10000/17326 (58%) 21.2 min, 7.9 urnas/s, falhas 0
+23:19:08 [SC] 11000/17326 (63%) 23.3 min, 7.9 urnas/s, falhas 0
+23:21:57 [SC] 12000/17326 (69%) 26.1 min, 7.7 urnas/s, falhas 0
+23:23:54 [SC] 13000/17326 (75%) 28.1 min, 7.7 urnas/s, falhas 0
+23:25:50 [SC] 14000/17326 (81%) 30.0 min, 7.8 urnas/s, falhas 0
+23:27:47 [SC] 15000/17326 (87%) 31.9 min, 7.8 urnas/s, falhas 0
+23:29:42 [SC] 16000/17326 (92%) 33.9 min, 7.9 urnas/s, falhas 0
+23:31:41 [SC] 17000/17326 (98%) 35.8 min, 7.9 urnas/s, falhas 0
+23:32:17 [SC] 17326/17326 (100%) 36.4 min, 7.9 urnas/s, falhas 0
+23:32:18 [SC] concluída: 17326 urnas em 36.5 min, 0 falhas; comp bate 17326/17326, manual bate 17090/17326
+23:32:19 [MA] 18093 urnas, 32 conexões
+23:34:06 [MA] 1000/18093 (6%) 1.8 min, 9.3 urnas/s, falhas 0
+23:35:49 [MA] 2000/18093 (11%) 3.5 min, 9.5 urnas/s, falhas 0
+23:37:33 [MA] 3000/18093 (17%) 5.2 min, 9.5 urnas/s, falhas 0
+23:39:17 [MA] 4000/18093 (22%) 7.0 min, 9.6 urnas/s, falhas 0
+23:41:02 [MA] 5000/18093 (28%) 8.7 min, 9.6 urnas/s, falhas 0
+23:42:46 [MA] 6000/18093 (33%) 10.5 min, 9.6 urnas/s, falhas 0
+23:44:30 [MA] 7000/18093 (39%) 12.2 min, 9.6 urnas/s, falhas 0
+23:46:13 [MA] 8000/18093 (44%) 13.9 min, 9.6 urnas/s, falhas 0
+23:47:57 [MA] 9000/18093 (50%) 15.6 min, 9.6 urnas/s, falhas 0
+23:49:41 [MA] 10000/18093 (55%) 17.4 min, 9.6 urnas/s, falhas 0
+23:51:20 [MA] 11000/18093 (61%) 19.0 min, 9.6 urnas/s, falhas 0
+23:52:59 [MA] 12000/18093 (66%) 20.7 min, 9.7 urnas/s, falhas 0
+23:54:35 [MA] 13000/18093 (72%) 22.3 min, 9.7 urnas/s, falhas 0
+23:56:16 [MA] 14000/18093 (77%) 24.0 min, 9.7 urnas/s, falhas 0
+23:57:54 [MA] 15000/18093 (83%) 25.6 min, 9.8 urnas/s, falhas 0
+23:59:32 [MA] 16000/18093 (88%) 27.2 min, 9.8 urnas/s, falhas 0
+00:01:10 [MA] 17000/18093 (94%) 28.9 min, 9.8 urnas/s, falhas 0
+00:02:49 [MA] 18000/18093 (99%) 30.5 min, 9.8 urnas/s, falhas 0
+00:02:58 [MA] 18093/18093 (100%) 30.7 min, 9.8 urnas/s, falhas 0
+00:02:58 [MA] concluída: 18093 urnas em 30.7 min, 0 falhas; comp bate 18093/18093, manual bate 17839/18093
+00:02:59 [PA] 20827 urnas, 32 conexões
+00:04:43 [PA] 1000/20827 (5%) 1.7 min, 9.6 urnas/s, falhas 0
+00:06:25 [PA] 2000/20827 (10%) 3.4 min, 9.7 urnas/s, falhas 0
+00:08:06 [PA] 3000/20827 (14%) 5.1 min, 9.8 urnas/s, falhas 0
+00:09:48 [PA] 4000/20827 (19%) 6.8 min, 9.8 urnas/s, falhas 0
+00:11:32 [PA] 5000/20827 (24%) 8.5 min, 9.8 urnas/s, falhas 0
+00:13:12 [PA] 6000/20827 (29%) 10.2 min, 9.8 urnas/s, falhas 0
+00:14:55 [PA] 7000/20827 (34%) 11.9 min, 9.8 urnas/s, falhas 0
+00:16:38 [PA] 8000/20827 (38%) 13.7 min, 9.8 urnas/s, falhas 0
+00:18:23 [PA] 9000/20827 (43%) 15.4 min, 9.7 urnas/s, falhas 0
+00:20:05 [PA] 10000/20827 (48%) 17.1 min, 9.7 urnas/s, falhas 0
+00:21:47 [PA] 11000/20827 (53%) 18.8 min, 9.7 urnas/s, falhas 0
+00:23:27 [PA] 12000/20827 (58%) 20.5 min, 9.8 urnas/s, falhas 0
+00:25:12 [PA] 13000/20827 (62%) 22.2 min, 9.8 urnas/s, falhas 0
+00:26:53 [PA] 14000/20827 (67%) 23.9 min, 9.8 urnas/s, falhas 0
+00:28:34 [PA] 15000/20827 (72%) 25.6 min, 9.8 urnas/s, falhas 0
+00:30:14 [PA] 16000/20827 (77%) 27.2 min, 9.8 urnas/s, falhas 0
+00:31:56 [PA] 17000/20827 (82%) 29.0 min, 9.8 urnas/s, falhas 0
+00:33:38 [PA] 18000/20827 (86%) 30.6 min, 9.8 urnas/s, falhas 0
+00:35:23 [PA] 19000/20827 (91%) 32.4 min, 9.8 urnas/s, falhas 0
+00:37:14 [PA] 20000/20827 (96%) 34.3 min, 9.7 urnas/s, falhas 0
+00:38:41 [PA] 20827/20827 (100%) 35.7 min, 9.7 urnas/s, falhas 0
+00:38:41 [PA] concluída: 20827 urnas em 35.7 min, 0 falhas; comp bate 20826/20827, manual bate 20534/20827
+00:38:42 [PE] 21418 urnas, 32 conexões
+00:40:44 [PE] 1000/21418 (5%) 2.0 min, 8.2 urnas/s, falhas 0
+00:42:41 [PE] 2000/21418 (9%) 4.0 min, 8.4 urnas/s, falhas 0
+00:44:36 [PE] 3000/21418 (14%) 5.9 min, 8.5 urnas/s, falhas 0
+00:46:34 [PE] 4000/21418 (19%) 7.9 min, 8.5 urnas/s, falhas 0
+00:48:30 [PE] 5000/21418 (23%) 9.8 min, 8.5 urnas/s, falhas 0
+00:50:28 [PE] 6000/21418 (28%) 11.8 min, 8.5 urnas/s, falhas 0
+00:52:26 [PE] 7000/21418 (33%) 13.7 min, 8.5 urnas/s, falhas 0
+00:54:24 [PE] 8000/21418 (37%) 15.7 min, 8.5 urnas/s, falhas 0
+00:56:21 [PE] 9000/21418 (42%) 17.6 min, 8.5 urnas/s, falhas 0
+00:58:16 [PE] 10000/21418 (47%) 19.6 min, 8.5 urnas/s, falhas 0
+01:00:10 [PE] 11000/21418 (51%) 21.5 min, 8.5 urnas/s, falhas 0
+01:02:07 [PE] 12000/21418 (56%) 23.4 min, 8.5 urnas/s, falhas 0
+01:04:26 [PE] 13000/21418 (61%) 25.7 min, 8.4 urnas/s, falhas 0
+01:06:38 [PE] 14000/21418 (65%) 27.9 min, 8.4 urnas/s, falhas 0
+01:09:01 [PE] 15000/21418 (70%) 30.3 min, 8.2 urnas/s, falhas 0
+01:11:21 [PE] 16000/21418 (75%) 32.6 min, 8.2 urnas/s, falhas 0
+01:13:32 [PE] 17000/21418 (79%) 34.8 min, 8.1 urnas/s, falhas 0
+01:15:50 [PE] 18000/21418 (84%) 37.1 min, 8.1 urnas/s, falhas 0
+01:18:04 [PE] 19000/21418 (89%) 39.4 min, 8.0 urnas/s, falhas 0
+01:20:18 [PE] 20000/21418 (93%) 41.6 min, 8.0 urnas/s, falhas 0
+01:22:39 [PE] 21000/21418 (98%) 43.9 min, 8.0 urnas/s, falhas 0
+01:23:33 [PE] 21418/21418 (100%) 44.8 min, 8.0 urnas/s, falhas 0
+01:23:35 [PE] concluída: 21418 urnas em 44.9 min, 0 falhas; comp bate 21418/21418, manual bate 21002/21418
+01:23:36 [CE] 23765 urnas, 32 conexões
+01:25:42 [CE] 1000/23765 (4%) 2.1 min, 8.0 urnas/s, falhas 0
+01:27:48 [CE] 2000/23765 (8%) 4.2 min, 7.9 urnas/s, falhas 0
+01:29:49 [CE] 3000/23765 (13%) 6.2 min, 8.0 urnas/s, falhas 0
+01:31:50 [CE] 4000/23765 (17%) 8.2 min, 8.1 urnas/s, falhas 0
+01:33:56 [CE] 5000/23765 (21%) 10.3 min, 8.1 urnas/s, falhas 0
+01:35:57 [CE] 6000/23765 (25%) 12.4 min, 8.1 urnas/s, falhas 0
+01:37:54 [CE] 7000/23765 (29%) 14.3 min, 8.2 urnas/s, falhas 0
+01:39:46 [CE] 8000/23765 (34%) 16.2 min, 8.3 urnas/s, falhas 0
+01:41:41 [CE] 9000/23765 (38%) 18.1 min, 8.3 urnas/s, falhas 0
+01:43:32 [CE] 10000/23765 (42%) 19.9 min, 8.4 urnas/s, falhas 0
+01:45:22 [CE] 11000/23765 (46%) 21.8 min, 8.4 urnas/s, falhas 0
+01:47:12 [CE] 12000/23765 (50%) 23.6 min, 8.5 urnas/s, falhas 0
+01:49:05 [CE] 13000/23765 (55%) 25.5 min, 8.5 urnas/s, falhas 0
+01:50:58 [CE] 14000/23765 (59%) 27.4 min, 8.5 urnas/s, falhas 0
+01:52:51 [CE] 15000/23765 (63%) 29.2 min, 8.6 urnas/s, falhas 0
+01:54:40 [CE] 16000/23765 (67%) 31.1 min, 8.6 urnas/s, falhas 0
+01:56:32 [CE] 17000/23765 (72%) 32.9 min, 8.6 urnas/s, falhas 0
+01:58:24 [CE] 18000/23765 (76%) 34.8 min, 8.6 urnas/s, falhas 0
+02:00:13 [CE] 19000/23765 (80%) 36.6 min, 8.7 urnas/s, falhas 0
+02:02:02 [CE] 20000/23765 (84%) 38.4 min, 8.7 urnas/s, falhas 0
+02:03:55 [CE] 21000/23765 (88%) 40.3 min, 8.7 urnas/s, falhas 0
+02:05:47 [CE] 22000/23765 (93%) 42.2 min, 8.7 urnas/s, falhas 0
+02:07:37 [CE] 23000/23765 (97%) 44.0 min, 8.7 urnas/s, falhas 0
+02:08:59 [CE] 23765/23765 (100%) 45.4 min, 8.7 urnas/s, falhas 0
+02:09:01 [CE] concluída: 23765 urnas em 45.4 min, 0 falhas; comp bate 23765/23765, manual bate 23270/23765
+02:09:03 [PR] 27142 urnas, 32 conexões
+02:10:56 [PR] 1000/27142 (4%) 1.9 min, 8.8 urnas/s, falhas 0
+02:12:47 [PR] 2000/27142 (7%) 3.7 min, 8.9 urnas/s, falhas 0
+02:14:39 [PR] 3000/27142 (11%) 5.6 min, 8.9 urnas/s, falhas 0
+02:16:31 [PR] 4000/27142 (15%) 7.5 min, 8.9 urnas/s, falhas 0
+02:18:20 [PR] 5000/27142 (18%) 9.3 min, 9.0 urnas/s, falhas 0
+02:20:11 [PR] 6000/27142 (22%) 11.1 min, 9.0 urnas/s, falhas 0
+02:22:01 [PR] 7000/27142 (26%) 13.0 min, 9.0 urnas/s, falhas 0
+02:23:50 [PR] 8000/27142 (29%) 14.8 min, 9.0 urnas/s, falhas 0
+02:25:42 [PR] 9000/27142 (33%) 16.7 min, 9.0 urnas/s, falhas 0
+02:27:34 [PR] 10000/27142 (37%) 18.5 min, 9.0 urnas/s, falhas 0
+02:29:23 [PR] 11000/27142 (41%) 20.3 min, 9.0 urnas/s, falhas 0
+02:31:14 [PR] 12000/27142 (44%) 22.2 min, 9.0 urnas/s, falhas 0
+02:33:05 [PR] 13000/27142 (48%) 24.0 min, 9.0 urnas/s, falhas 0
+02:34:56 [PR] 14000/27142 (52%) 25.9 min, 9.0 urnas/s, falhas 0
+02:36:46 [PR] 15000/27142 (55%) 27.7 min, 9.0 urnas/s, falhas 0
+02:38:37 [PR] 16000/27142 (59%) 29.6 min, 9.0 urnas/s, falhas 0
+02:40:28 [PR] 17000/27142 (63%) 31.4 min, 9.0 urnas/s, falhas 0
+02:42:21 [PR] 18000/27142 (66%) 33.3 min, 9.0 urnas/s, falhas 0
+02:44:08 [PR] 19000/27142 (70%) 35.1 min, 9.0 urnas/s, falhas 0
+02:46:09 [PR] 20000/27142 (74%) 37.1 min, 9.0 urnas/s, falhas 0
+02:48:03 [PR] 21000/27142 (77%) 39.0 min, 9.0 urnas/s, falhas 0
+02:49:52 [PR] 22000/27142 (81%) 40.8 min, 9.0 urnas/s, falhas 0
+02:51:41 [PR] 23000/27142 (85%) 42.6 min, 9.0 urnas/s, falhas 0
+02:53:33 [PR] 24000/27142 (88%) 44.5 min, 9.0 urnas/s, falhas 0
+02:55:24 [PR] 25000/27142 (92%) 46.4 min, 9.0 urnas/s, falhas 0
+02:57:17 [PR] 26000/27142 (96%) 48.2 min, 9.0 urnas/s, falhas 0
+02:59:06 [PR] 27000/27142 (99%) 50.1 min, 9.0 urnas/s, falhas 0
+02:59:20 [PR] 27142/27142 (100%) 50.3 min, 9.0 urnas/s, falhas 0
+02:59:22 [PR] concluída: 27142 urnas em 50.3 min, 0 falhas; comp bate 27140/27142, manual bate 26751/27142
+02:59:23 [RS] 27547 urnas, 32 conexões
+03:01:16 [RS] 1000/27547 (4%) 1.9 min, 8.9 urnas/s, falhas 0
+03:03:02 [RS] 2000/27547 (7%) 3.6 min, 9.2 urnas/s, falhas 0
+03:04:51 [RS] 3000/27547 (11%) 5.5 min, 9.2 urnas/s, falhas 0
+03:06:39 [RS] 4000/27547 (15%) 7.3 min, 9.2 urnas/s, falhas 0
+03:08:29 [RS] 5000/27547 (18%) 9.1 min, 9.2 urnas/s, falhas 0
+03:10:17 [RS] 6000/27547 (22%) 10.9 min, 9.2 urnas/s, falhas 0
+03:12:05 [RS] 7000/27547 (25%) 12.7 min, 9.2 urnas/s, falhas 0
+03:13:54 [RS] 8000/27547 (29%) 14.5 min, 9.2 urnas/s, falhas 0
+03:15:42 [RS] 9000/27547 (33%) 16.3 min, 9.2 urnas/s, falhas 0
+03:17:31 [RS] 10000/27547 (36%) 18.1 min, 9.2 urnas/s, falhas 0
+03:19:18 [RS] 11000/27547 (40%) 19.9 min, 9.2 urnas/s, falhas 0
+03:21:04 [RS] 12000/27547 (44%) 21.7 min, 9.2 urnas/s, falhas 0
+03:22:54 [RS] 13000/27547 (47%) 23.5 min, 9.2 urnas/s, falhas 0
+03:24:43 [RS] 14000/27547 (51%) 25.3 min, 9.2 urnas/s, falhas 0
+03:26:31 [RS] 15000/27547 (54%) 27.1 min, 9.2 urnas/s, falhas 0
+03:29:07 [RS] 16000/27547 (58%) 29.7 min, 9.0 urnas/s, falhas 22
+03:30:52 [RS] 17000/27547 (62%) 31.5 min, 9.0 urnas/s, falhas 22
+03:32:42 [RS] 18000/27547 (65%) 33.3 min, 9.0 urnas/s, falhas 22
+03:34:29 [RS] 19000/27547 (69%) 35.1 min, 9.0 urnas/s, falhas 22
+03:36:18 [RS] 20000/27547 (73%) 36.9 min, 9.0 urnas/s, falhas 22
+03:38:06 [RS] 21000/27547 (76%) 38.7 min, 9.0 urnas/s, falhas 22
+03:39:55 [RS] 22000/27547 (80%) 40.5 min, 9.0 urnas/s, falhas 22
+03:41:49 [RS] 23000/27547 (83%) 42.4 min, 9.0 urnas/s, falhas 22
+03:43:40 [RS] 24000/27547 (87%) 44.3 min, 9.0 urnas/s, falhas 22
+03:45:29 [RS] 25000/27547 (91%) 46.1 min, 9.0 urnas/s, falhas 22
+03:47:18 [RS] 26000/27547 (94%) 47.9 min, 9.0 urnas/s, falhas 22
+03:49:05 [RS] 27000/27547 (98%) 49.7 min, 9.1 urnas/s, falhas 22
+03:50:03 [RS] 27547/27547 (100%) 50.7 min, 9.1 urnas/s, falhas 22
+03:50:04 [RS] concluída: 27525 urnas em 50.7 min, 22 falhas; comp bate 27524/27525, manual bate 27185/27525
+03:50:05 [BA] 35476 urnas, 32 conexões
+03:52:07 [BA] 1000/35476 (3%) 2.0 min, 8.1 urnas/s, falhas 0
+03:54:05 [BA] 2000/35476 (6%) 4.0 min, 8.3 urnas/s, falhas 0
+03:56:02 [BA] 3000/35476 (8%) 6.0 min, 8.4 urnas/s, falhas 0
+03:57:59 [BA] 4000/35476 (11%) 7.9 min, 8.4 urnas/s, falhas 0
+03:59:58 [BA] 5000/35476 (14%) 9.9 min, 8.4 urnas/s, falhas 0
+04:01:56 [BA] 6000/35476 (17%) 11.8 min, 8.4 urnas/s, falhas 0
+04:03:51 [BA] 7000/35476 (20%) 13.8 min, 8.5 urnas/s, falhas 0
+04:05:49 [BA] 8000/35476 (23%) 15.7 min, 8.5 urnas/s, falhas 0
+04:07:48 [BA] 9000/35476 (25%) 17.7 min, 8.5 urnas/s, falhas 0
+04:09:44 [BA] 10000/35476 (28%) 19.7 min, 8.5 urnas/s, falhas 0
+04:11:42 [BA] 11000/35476 (31%) 21.6 min, 8.5 urnas/s, falhas 0
+04:13:42 [BA] 12000/35476 (34%) 23.6 min, 8.5 urnas/s, falhas 0
+04:15:42 [BA] 13000/35476 (37%) 25.6 min, 8.5 urnas/s, falhas 0
+04:17:41 [BA] 14000/35476 (39%) 27.6 min, 8.5 urnas/s, falhas 0
+04:19:36 [BA] 15000/35476 (42%) 29.5 min, 8.5 urnas/s, falhas 0
+04:21:33 [BA] 16000/35476 (45%) 31.5 min, 8.5 urnas/s, falhas 0
+04:23:30 [BA] 17000/35476 (48%) 33.4 min, 8.5 urnas/s, falhas 0
+04:25:27 [BA] 18000/35476 (51%) 35.4 min, 8.5 urnas/s, falhas 0
+04:27:21 [BA] 19000/35476 (54%) 37.3 min, 8.5 urnas/s, falhas 0
+04:29:20 [BA] 20000/35476 (56%) 39.3 min, 8.5 urnas/s, falhas 0
+04:31:20 [BA] 21000/35476 (59%) 41.2 min, 8.5 urnas/s, falhas 0
+04:33:17 [BA] 22000/35476 (62%) 43.2 min, 8.5 urnas/s, falhas 0
+04:35:11 [BA] 23000/35476 (65%) 45.1 min, 8.5 urnas/s, falhas 0
+04:37:10 [BA] 24000/35476 (68%) 47.1 min, 8.5 urnas/s, falhas 0
+04:39:08 [BA] 25000/35476 (70%) 49.1 min, 8.5 urnas/s, falhas 0
+04:41:06 [BA] 26000/35476 (73%) 51.0 min, 8.5 urnas/s, falhas 0
+04:43:02 [BA] 27000/35476 (76%) 53.0 min, 8.5 urnas/s, falhas 0
+04:44:59 [BA] 28000/35476 (79%) 54.9 min, 8.5 urnas/s, falhas 0
+04:46:59 [BA] 29000/35476 (82%) 56.9 min, 8.5 urnas/s, falhas 0
+04:48:55 [BA] 30000/35476 (85%) 58.8 min, 8.5 urnas/s, falhas 0
+04:50:50 [BA] 31000/35476 (87%) 60.8 min, 8.5 urnas/s, falhas 0
+04:52:50 [BA] 32000/35476 (90%) 62.8 min, 8.5 urnas/s, falhas 0
+04:54:52 [BA] 33000/35476 (93%) 64.8 min, 8.5 urnas/s, falhas 0
+04:56:49 [BA] 34000/35476 (96%) 66.7 min, 8.5 urnas/s, falhas 0
+04:58:44 [BA] 35000/35476 (99%) 68.7 min, 8.5 urnas/s, falhas 0
+04:59:39 [BA] 35476/35476 (100%) 69.6 min, 8.5 urnas/s, falhas 0
+04:59:39 [BA] concluída: 35476 urnas em 69.6 min, 0 falhas; comp bate 35475/35476, manual bate 34911/35476
+04:59:42 [RJ] 37675 urnas, 32 conexões
+05:01:39 [RJ] 1000/37675 (3%) 2.0 min, 8.5 urnas/s, falhas 0
+05:03:34 [RJ] 2000/37675 (5%) 3.9 min, 8.6 urnas/s, falhas 0
+05:05:24 [RJ] 3000/37675 (8%) 5.7 min, 8.8 urnas/s, falhas 0
+05:07:18 [RJ] 4000/37675 (11%) 7.6 min, 8.8 urnas/s, falhas 0
+05:09:11 [RJ] 5000/37675 (13%) 9.5 min, 8.8 urnas/s, falhas 0
+05:11:04 [RJ] 6000/37675 (16%) 11.4 min, 8.8 urnas/s, falhas 0
+05:13:01 [RJ] 7000/37675 (19%) 13.3 min, 8.8 urnas/s, falhas 0
+05:14:57 [RJ] 8000/37675 (21%) 15.2 min, 8.7 urnas/s, falhas 0
+05:16:50 [RJ] 9000/37675 (24%) 17.1 min, 8.8 urnas/s, falhas 0
+05:18:43 [RJ] 10000/37675 (27%) 19.0 min, 8.8 urnas/s, falhas 0
+05:20:36 [RJ] 11000/37675 (29%) 20.9 min, 8.8 urnas/s, falhas 0
+05:22:30 [RJ] 12000/37675 (32%) 22.8 min, 8.8 urnas/s, falhas 0
+05:24:24 [RJ] 13000/37675 (35%) 24.7 min, 8.8 urnas/s, falhas 0
+05:26:19 [RJ] 14000/37675 (37%) 26.6 min, 8.8 urnas/s, falhas 0
+05:28:12 [RJ] 15000/37675 (40%) 28.5 min, 8.8 urnas/s, falhas 0
+05:30:06 [RJ] 16000/37675 (42%) 30.4 min, 8.8 urnas/s, falhas 0
+05:32:00 [RJ] 17000/37675 (45%) 32.3 min, 8.8 urnas/s, falhas 0
+05:33:52 [RJ] 18000/37675 (48%) 34.2 min, 8.8 urnas/s, falhas 0
+05:35:43 [RJ] 19000/37675 (50%) 36.0 min, 8.8 urnas/s, falhas 0
+05:37:39 [RJ] 20000/37675 (53%) 38.0 min, 8.8 urnas/s, falhas 0
+05:39:32 [RJ] 21000/37675 (56%) 39.8 min, 8.8 urnas/s, falhas 0
+05:41:24 [RJ] 22000/37675 (58%) 41.7 min, 8.8 urnas/s, falhas 0
+05:43:25 [RJ] 23000/37675 (61%) 43.7 min, 8.8 urnas/s, falhas 0
+05:45:38 [RJ] 24000/37675 (64%) 45.9 min, 8.7 urnas/s, falhas 0
+05:47:30 [RJ] 25000/37675 (66%) 47.8 min, 8.7 urnas/s, falhas 0
+05:49:21 [RJ] 26000/37675 (69%) 49.7 min, 8.7 urnas/s, falhas 0
+05:51:15 [RJ] 27000/37675 (72%) 51.6 min, 8.7 urnas/s, falhas 0
+05:53:10 [RJ] 28000/37675 (74%) 53.5 min, 8.7 urnas/s, falhas 0
+05:55:06 [RJ] 29000/37675 (77%) 55.4 min, 8.7 urnas/s, falhas 0
+05:56:56 [RJ] 30000/37675 (80%) 57.2 min, 8.7 urnas/s, falhas 0
+05:58:52 [RJ] 31000/37675 (82%) 59.2 min, 8.7 urnas/s, falhas 0
+06:00:46 [RJ] 32000/37675 (85%) 61.1 min, 8.7 urnas/s, falhas 0
+06:02:41 [RJ] 33000/37675 (88%) 63.0 min, 8.7 urnas/s, falhas 0
+06:04:32 [RJ] 34000/37675 (90%) 64.8 min, 8.7 urnas/s, falhas 0
+06:06:27 [RJ] 35000/37675 (93%) 66.8 min, 8.7 urnas/s, falhas 0
+06:08:20 [RJ] 36000/37675 (96%) 68.6 min, 8.7 urnas/s, falhas 0
+06:10:12 [RJ] 37000/37675 (98%) 70.5 min, 8.7 urnas/s, falhas 0
+06:11:28 [RJ] 37675/37675 (100%) 71.8 min, 8.7 urnas/s, falhas 0
+06:11:30 [RJ] concluída: 37675 urnas em 71.8 min, 0 falhas; comp bate 37672/37675, manual bate 37001/37675
+06:11:33 [MG] 52062 urnas, 32 conexões
+06:13:25 [MG] 1000/52062 (2%) 1.9 min, 8.9 urnas/s, falhas 0
+06:15:12 [MG] 2000/52062 (4%) 3.7 min, 9.1 urnas/s, falhas 0
+06:16:56 [MG] 3000/52062 (6%) 5.4 min, 9.3 urnas/s, falhas 0
+06:18:41 [MG] 4000/52062 (8%) 7.1 min, 9.3 urnas/s, falhas 0
+06:20:30 [MG] 5000/52062 (10%) 8.9 min, 9.3 urnas/s, falhas 0
+06:22:15 [MG] 6000/52062 (12%) 10.7 min, 9.3 urnas/s, falhas 1
+06:24:02 [MG] 7000/52062 (13%) 12.5 min, 9.3 urnas/s, falhas 1
+06:25:48 [MG] 8000/52062 (15%) 14.3 min, 9.4 urnas/s, falhas 1
+06:27:36 [MG] 9000/52062 (17%) 16.1 min, 9.3 urnas/s, falhas 1
+06:29:22 [MG] 10000/52062 (19%) 17.8 min, 9.4 urnas/s, falhas 1
+06:31:09 [MG] 11000/52062 (21%) 19.6 min, 9.4 urnas/s, falhas 1
+06:32:54 [MG] 12000/52062 (23%) 21.4 min, 9.4 urnas/s, falhas 1
+06:34:40 [MG] 13000/52062 (25%) 23.1 min, 9.4 urnas/s, falhas 1
+06:36:27 [MG] 14000/52062 (27%) 24.9 min, 9.4 urnas/s, falhas 1
+06:38:14 [MG] 15000/52062 (29%) 26.7 min, 9.4 urnas/s, falhas 1
+06:40:01 [MG] 16000/52062 (31%) 28.5 min, 9.4 urnas/s, falhas 1
+06:41:55 [MG] 17000/52062 (33%) 30.4 min, 9.3 urnas/s, falhas 1
+06:43:42 [MG] 18000/52062 (35%) 32.1 min, 9.3 urnas/s, falhas 1
+06:45:27 [MG] 19000/52062 (36%) 33.9 min, 9.3 urnas/s, falhas 1
+06:47:12 [MG] 20000/52062 (38%) 35.6 min, 9.4 urnas/s, falhas 1
+06:48:57 [MG] 21000/52062 (40%) 37.4 min, 9.4 urnas/s, falhas 1
+06:50:47 [MG] 22000/52062 (42%) 39.2 min, 9.3 urnas/s, falhas 1
+06:52:33 [MG] 23000/52062 (44%) 41.0 min, 9.3 urnas/s, falhas 1
+06:54:18 [MG] 24000/52062 (46%) 42.7 min, 9.4 urnas/s, falhas 1
+06:56:06 [MG] 25000/52062 (48%) 44.6 min, 9.4 urnas/s, falhas 1
+06:57:54 [MG] 26000/52062 (50%) 46.3 min, 9.3 urnas/s, falhas 1
+06:59:38 [MG] 27000/52062 (52%) 48.1 min, 9.4 urnas/s, falhas 1
+07:01:22 [MG] 28000/52062 (54%) 49.8 min, 9.4 urnas/s, falhas 1
+07:03:09 [MG] 29000/52062 (56%) 51.6 min, 9.4 urnas/s, falhas 1
+07:04:55 [MG] 30000/52062 (58%) 53.4 min, 9.4 urnas/s, falhas 1
+07:06:41 [MG] 31000/52062 (60%) 55.1 min, 9.4 urnas/s, falhas 1
+07:08:26 [MG] 32000/52062 (61%) 56.9 min, 9.4 urnas/s, falhas 1
+07:10:14 [MG] 33000/52062 (63%) 58.7 min, 9.4 urnas/s, falhas 1
+07:12:02 [MG] 34000/52062 (65%) 60.5 min, 9.4 urnas/s, falhas 1
+07:13:49 [MG] 35000/52062 (67%) 62.3 min, 9.4 urnas/s, falhas 1
+07:15:38 [MG] 36000/52062 (69%) 64.1 min, 9.4 urnas/s, falhas 1
+07:17:21 [MG] 37000/52062 (71%) 65.8 min, 9.4 urnas/s, falhas 1
+07:19:10 [MG] 38000/52062 (73%) 67.6 min, 9.4 urnas/s, falhas 1
+07:20:58 [MG] 39000/52062 (75%) 69.4 min, 9.4 urnas/s, falhas 1
+07:22:42 [MG] 40000/52062 (77%) 71.2 min, 9.4 urnas/s, falhas 1
+07:24:26 [MG] 41000/52062 (79%) 72.9 min, 9.4 urnas/s, falhas 1
+07:26:13 [MG] 42000/52062 (81%) 74.7 min, 9.4 urnas/s, falhas 1
+07:27:58 [MG] 43000/52062 (83%) 76.4 min, 9.4 urnas/s, falhas 1
+07:29:41 [MG] 44000/52062 (85%) 78.1 min, 9.4 urnas/s, falhas 1
+07:31:24 [MG] 45000/52062 (86%) 79.9 min, 9.4 urnas/s, falhas 1
+07:33:12 [MG] 46000/52062 (88%) 81.6 min, 9.4 urnas/s, falhas 1
+07:34:58 [MG] 47000/52062 (90%) 83.4 min, 9.4 urnas/s, falhas 1
+07:36:41 [MG] 48000/52062 (92%) 85.1 min, 9.4 urnas/s, falhas 1
+07:38:25 [MG] 49000/52062 (94%) 86.9 min, 9.4 urnas/s, falhas 1
+07:40:13 [MG] 50000/52062 (96%) 88.7 min, 9.4 urnas/s, falhas 1
+07:42:00 [MG] 51000/52062 (98%) 90.5 min, 9.4 urnas/s, falhas 2
+07:43:46 [MG] 52000/52062 (100%) 92.2 min, 9.4 urnas/s, falhas 2
+07:43:51 [MG] 52062/52062 (100%) 92.3 min, 9.4 urnas/s, falhas 2
+07:43:52 [MG] concluída: 52060 urnas em 92.3 min, 2 falhas; comp bate 52058/52060, manual bate 51135/52060
+07:43:54 [SP] 103656 urnas, 32 conexões
+07:45:51 [SP] 1000/103656 (1%) 2.0 min, 8.5 urnas/s, falhas 0
+07:47:41 [SP] 2000/103656 (2%) 3.8 min, 8.8 urnas/s, falhas 0
+07:49:31 [SP] 3000/103656 (3%) 5.6 min, 8.9 urnas/s, falhas 0
+07:51:18 [SP] 4000/103656 (4%) 7.4 min, 9.0 urnas/s, falhas 0
+07:53:09 [SP] 5000/103656 (5%) 9.2 min, 9.0 urnas/s, falhas 0
+07:54:58 [SP] 6000/103656 (6%) 11.1 min, 9.0 urnas/s, falhas 0
+07:56:46 [SP] 7000/103656 (7%) 12.9 min, 9.1 urnas/s, falhas 0
+07:58:36 [SP] 8000/103656 (8%) 14.7 min, 9.1 urnas/s, falhas 0
+08:00:25 [SP] 9000/103656 (9%) 16.5 min, 9.1 urnas/s, falhas 0
+08:02:17 [SP] 10000/103656 (10%) 18.4 min, 9.1 urnas/s, falhas 0
+08:04:04 [SP] 11000/103656 (11%) 20.2 min, 9.1 urnas/s, falhas 0
+08:05:54 [SP] 12000/103656 (12%) 22.0 min, 9.1 urnas/s, falhas 0
+08:07:44 [SP] 13000/103656 (13%) 23.8 min, 9.1 urnas/s, falhas 0
+08:09:33 [SP] 14000/103656 (14%) 25.7 min, 9.1 urnas/s, falhas 0
+08:11:21 [SP] 15000/103656 (14%) 27.4 min, 9.1 urnas/s, falhas 0
+08:13:13 [SP] 16000/103656 (15%) 29.3 min, 9.1 urnas/s, falhas 0
+08:15:04 [SP] 17000/103656 (16%) 31.2 min, 9.1 urnas/s, falhas 0
+08:16:52 [SP] 18000/103656 (17%) 33.0 min, 9.1 urnas/s, falhas 0
+08:18:44 [SP] 19000/103656 (18%) 34.8 min, 9.1 urnas/s, falhas 0
+08:20:35 [SP] 20000/103656 (19%) 36.7 min, 9.1 urnas/s, falhas 0
+08:22:26 [SP] 21000/103656 (20%) 38.5 min, 9.1 urnas/s, falhas 0
+08:24:15 [SP] 22000/103656 (21%) 40.3 min, 9.1 urnas/s, falhas 0
+08:26:03 [SP] 23000/103656 (22%) 42.2 min, 9.1 urnas/s, falhas 0
+08:27:52 [SP] 24000/103656 (23%) 44.0 min, 9.1 urnas/s, falhas 0
+08:29:43 [SP] 25000/103656 (24%) 45.8 min, 9.1 urnas/s, falhas 0
+08:31:32 [SP] 26000/103656 (25%) 47.6 min, 9.1 urnas/s, falhas 0
+08:33:18 [SP] 27000/103656 (26%) 49.4 min, 9.1 urnas/s, falhas 0
+08:35:08 [SP] 28000/103656 (27%) 51.2 min, 9.1 urnas/s, falhas 0
+08:36:58 [SP] 29000/103656 (28%) 53.1 min, 9.1 urnas/s, falhas 0
+08:38:46 [SP] 30000/103656 (29%) 54.9 min, 9.1 urnas/s, falhas 0
+08:40:32 [SP] 31000/103656 (30%) 56.6 min, 9.1 urnas/s, falhas 0
+08:42:25 [SP] 32000/103656 (31%) 58.5 min, 9.1 urnas/s, falhas 0
+08:44:16 [SP] 33000/103656 (32%) 60.4 min, 9.1 urnas/s, falhas 0
+08:46:05 [SP] 34000/103656 (33%) 62.2 min, 9.1 urnas/s, falhas 0
+08:47:54 [SP] 35000/103656 (34%) 64.0 min, 9.1 urnas/s, falhas 0
+08:49:46 [SP] 36000/103656 (35%) 65.9 min, 9.1 urnas/s, falhas 0
+08:51:35 [SP] 37000/103656 (36%) 67.7 min, 9.1 urnas/s, falhas 0
+08:53:25 [SP] 38000/103656 (37%) 69.5 min, 9.1 urnas/s, falhas 0
+08:55:13 [SP] 39000/103656 (38%) 71.3 min, 9.1 urnas/s, falhas 0
+08:57:04 [SP] 40000/103656 (39%) 73.2 min, 9.1 urnas/s, falhas 0
+08:58:56 [SP] 41000/103656 (40%) 75.0 min, 9.1 urnas/s, falhas 0
+09:00:45 [SP] 42000/103656 (41%) 76.9 min, 9.1 urnas/s, falhas 0
+09:02:34 [SP] 43000/103656 (41%) 78.7 min, 9.1 urnas/s, falhas 0
+09:04:26 [SP] 44000/103656 (42%) 80.5 min, 9.1 urnas/s, falhas 0
+09:06:16 [SP] 45000/103656 (43%) 82.4 min, 9.1 urnas/s, falhas 0
+09:08:05 [SP] 46000/103656 (44%) 84.2 min, 9.1 urnas/s, falhas 0
+09:09:53 [SP] 47000/103656 (45%) 86.0 min, 9.1 urnas/s, falhas 0
+09:11:46 [SP] 48000/103656 (46%) 87.9 min, 9.1 urnas/s, falhas 0
+09:13:36 [SP] 49000/103656 (47%) 89.7 min, 9.1 urnas/s, falhas 0
+09:15:28 [SP] 50000/103656 (48%) 91.6 min, 9.1 urnas/s, falhas 0
+09:17:20 [SP] 51000/103656 (49%) 93.4 min, 9.1 urnas/s, falhas 0
+09:19:18 [SP] 52000/103656 (50%) 95.4 min, 9.1 urnas/s, falhas 0
+09:21:12 [SP] 53000/103656 (51%) 97.3 min, 9.1 urnas/s, falhas 0
+09:23:07 [SP] 54000/103656 (52%) 99.2 min, 9.1 urnas/s, falhas 0
+09:24:59 [SP] 55000/103656 (53%) 101.1 min, 9.1 urnas/s, falhas 0
+09:26:52 [SP] 56000/103656 (54%) 103.0 min, 9.1 urnas/s, falhas 0
+09:28:45 [SP] 57000/103656 (55%) 104.9 min, 9.1 urnas/s, falhas 0
+09:30:34 [SP] 58000/103656 (56%) 106.7 min, 9.1 urnas/s, falhas 0
+09:32:26 [SP] 59000/103656 (57%) 108.5 min, 9.1 urnas/s, falhas 0
+09:34:18 [SP] 60000/103656 (58%) 110.4 min, 9.1 urnas/s, falhas 0
+09:36:07 [SP] 61000/103656 (59%) 112.2 min, 9.1 urnas/s, falhas 0
+09:38:04 [SP] 62000/103656 (60%) 114.2 min, 9.1 urnas/s, falhas 0
+09:40:12 [SP] 63000/103656 (61%) 116.3 min, 9.0 urnas/s, falhas 0
+09:42:16 [SP] 64000/103656 (62%) 118.4 min, 9.0 urnas/s, falhas 0
+09:44:17 [SP] 65000/103656 (63%) 120.4 min, 9.0 urnas/s, falhas 0
+09:46:21 [SP] 66000/103656 (64%) 122.5 min, 9.0 urnas/s, falhas 0
+09:48:25 [SP] 67000/103656 (65%) 124.5 min, 9.0 urnas/s, falhas 0
+09:50:27 [SP] 68000/103656 (66%) 126.5 min, 9.0 urnas/s, falhas 0
+09:52:25 [SP] 69000/103656 (67%) 128.5 min, 8.9 urnas/s, falhas 0
+09:54:23 [SP] 70000/103656 (68%) 130.5 min, 8.9 urnas/s, falhas 0
+09:56:26 [SP] 71000/103656 (68%) 132.5 min, 8.9 urnas/s, falhas 0
+09:58:21 [SP] 72000/103656 (69%) 134.4 min, 8.9 urnas/s, falhas 0
+10:00:10 [SP] 73000/103656 (70%) 136.3 min, 8.9 urnas/s, falhas 0
+10:02:01 [SP] 74000/103656 (71%) 138.1 min, 8.9 urnas/s, falhas 0
+10:03:51 [SP] 75000/103656 (72%) 140.0 min, 8.9 urnas/s, falhas 0
+10:05:42 [SP] 76000/103656 (73%) 141.8 min, 8.9 urnas/s, falhas 0
+10:07:33 [SP] 77000/103656 (74%) 143.6 min, 8.9 urnas/s, falhas 0
+10:09:22 [SP] 78000/103656 (75%) 145.5 min, 8.9 urnas/s, falhas 0
+10:11:10 [SP] 79000/103656 (76%) 147.3 min, 8.9 urnas/s, falhas 0
+10:13:04 [SP] 80000/103656 (77%) 149.2 min, 8.9 urnas/s, falhas 0
+10:14:54 [SP] 81000/103656 (78%) 151.0 min, 8.9 urnas/s, falhas 0
+10:16:41 [SP] 82000/103656 (79%) 152.8 min, 8.9 urnas/s, falhas 0
+10:18:32 [SP] 83000/103656 (80%) 154.6 min, 8.9 urnas/s, falhas 0
+10:20:22 [SP] 84000/103656 (81%) 156.5 min, 8.9 urnas/s, falhas 0
+10:22:13 [SP] 85000/103656 (82%) 158.3 min, 8.9 urnas/s, falhas 0
+10:24:00 [SP] 86000/103656 (83%) 160.1 min, 9.0 urnas/s, falhas 0
+10:25:52 [SP] 87000/103656 (84%) 162.0 min, 9.0 urnas/s, falhas 0
+10:27:43 [SP] 88000/103656 (85%) 163.8 min, 9.0 urnas/s, falhas 0
+10:29:30 [SP] 89000/103656 (86%) 165.6 min, 9.0 urnas/s, falhas 0
+10:31:19 [SP] 90000/103656 (87%) 167.4 min, 9.0 urnas/s, falhas 0
+10:33:10 [SP] 91000/103656 (88%) 169.3 min, 9.0 urnas/s, falhas 0
+10:35:07 [SP] 92000/103656 (89%) 171.2 min, 9.0 urnas/s, falhas 0
+10:37:01 [SP] 93000/103656 (90%) 173.1 min, 9.0 urnas/s, falhas 0
+10:38:52 [SP] 94000/103656 (91%) 175.0 min, 9.0 urnas/s, falhas 0
+10:40:47 [SP] 95000/103656 (92%) 176.9 min, 9.0 urnas/s, falhas 0
+10:42:41 [SP] 96000/103656 (93%) 178.8 min, 8.9 urnas/s, falhas 0
+10:44:32 [SP] 97000/103656 (94%) 180.6 min, 8.9 urnas/s, falhas 0
+10:46:23 [SP] 98000/103656 (95%) 182.5 min, 9.0 urnas/s, falhas 0
+10:48:18 [SP] 99000/103656 (96%) 184.4 min, 8.9 urnas/s, falhas 0
+10:50:12 [SP] 100000/103656 (96%) 186.3 min, 8.9 urnas/s, falhas 0
+10:51:57 [SP] 101000/103656 (97%) 188.0 min, 9.0 urnas/s, falhas 0
+10:53:43 [SP] 102000/103656 (98%) 189.8 min, 9.0 urnas/s, falhas 0
+10:55:30 [SP] 103000/103656 (99%) 191.6 min, 9.0 urnas/s, falhas 0
+10:56:37 [SP] 103656/103656 (100%) 192.7 min, 9.0 urnas/s, falhas 0
+10:56:39 [SP] concluída: 103656 urnas em 192.7 min, 0 falhas; comp bate 103652/103656, manual bate 102326/103656
+10:56:44 varredura concluída

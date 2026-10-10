@@ -1,0 +1,7 @@
+regiao,manual_bruto,por_mil_orig_bruto,por_mil_cal_bruto,pct_tardia_bruto,cobertura_celulas,manual_padronizado,por_mil_orig_padronizado,por_mil_cal_padronizado,pct_tardia_padronizado
+N,0.0548,0.503,0.114,26.23,1.0,0.0547,0.31,0.082,33.53
+NE,0.0714,0.362,0.085,36.43,1.0,0.0683,0.33,0.101,37.14
+CO,0.0677,0.079,0.026,10.36,1.0,0.0703,0.084,0.024,12.03
+SE,0.0655,0.138,0.044,7.71,1.0,0.067,0.189,0.049,7.36
+S,0.0805,0.167,0.0,3.06,0.952,0.079,0.187,0.0,2.42
+ZZ,0.0,0.0,0.0,11.48,0.116,0.0,0.0,0.0,1.93
