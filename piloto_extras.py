@@ -262,7 +262,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--uf", nargs="*", default=["CE", "BA", "RS", "PR"])
     ap.add_argument("--foco", nargs="*", default=["CE", "BA"])
-    ap.add_argument("--out", default="out/piloto")
+    ap.add_argument("--out", default=str(pb.cfg.OUT / "piloto"))
     a = ap.parse_args()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     con = duckdb.connect(str(pb.DB), read_only=True)

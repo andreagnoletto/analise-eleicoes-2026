@@ -16,3 +16,6 @@ __pycache__/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Log do vigia do 2º turno
+out/2t/aguardar.log

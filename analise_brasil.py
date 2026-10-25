@@ -291,7 +291,7 @@ def correlacoes(con, cand, out):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="out/brasil")
+    ap.add_argument("--out", default=str(pb.cfg.OUT / "brasil"))
     a = ap.parse_args()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     pd.set_option("display.width", 250); pd.set_option("display.max_columns", 40); pd.set_option("display.max_rows", 200)

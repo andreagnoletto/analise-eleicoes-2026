@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
 """
-Pipeline de análise de Boletins de Urna (BU) — Eleições 2026, 1º turno.
+Pipeline de análise de Boletins de Urna (BU) — Eleições 2026 (1º ou 2º turno, variável TURNO).
 Foco: hipótese de habilitação manual (sem biometria) concentrada no fim da sessão.
 
 Uso:
   python pipeline_bu.py download  --uf CE BA          # baixa + verifica SHA-512
   python pipeline_bu.py load      --uf CE BA ...      # carrega CSVs em DuckDB
   python pipeline_bu.py analyze   --foco CE BA --out out/piloto   # roda os testes, gera CSVs
+  TURNO=2 python pipeline_bu.py download --uf ALL     # 2º turno (carimbo via aguardar_2t.py ou --stamp)
 
 Requisitos: pip install -r requirements.txt (duckdb, pandas, matplotlib, requests)
 """
 import argparse, hashlib, os, sys, zipfile, glob
 from pathlib import Path
+import config as cfg
 
-BASE = "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/buweb"
-STAMP = "051020261403"
-DATA = Path("data"); RAW = DATA / "raw"; CSV = DATA / "csv"; OUT = Path("out")
-DB = DATA / "bu2026.duckdb"
+BASE = cfg.BU_BASE
+STAMP = cfg.STAMP
+DATA, RAW, CSV, OUT, DB = cfg.DATA, cfg.RAW, cfg.CSV, cfg.OUT, cfg.DB
 UFS_ALL = "AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO ZZ".split()
 NORDESTE = "AL BA CE MA PB PE PI RN SE".split()
 REGIAO = {**{u: "N"  for u in "AC AM AP PA RO RR TO".split()},
@@ -36,7 +37,7 @@ def download(ufs):
     import requests
     RAW.mkdir(parents=True, exist_ok=True)
     for uf in ufs:
-        name = f"bweb_1t_{uf}_{STAMP}.zip"
+        name = cfg.bu_zip(uf)
         dst = RAW / name
         if not dst.exists():
             print(f"[download] {name}")
@@ -67,12 +68,12 @@ def load(ufs):
     for uf in ufs:
         if uf in ja:
             print(f"[load] {uf}: já carregada, pulando"); continue
-        z = RAW / f"bweb_1t_{uf}_{STAMP}.zip"
+        z = RAW / cfg.bu_zip(uf)
         with zipfile.ZipFile(z) as zf:
             for m in zf.namelist():
                 if m.lower().endswith(".csv"):
                     zf.extract(m, CSV)
-        f = str(CSV / f"bweb_1t_{uf}_{STAMP}.csv")
+        f = str(CSV / cfg.bu_zip(uf).replace(".zip", ".csv"))
         src = f"""SELECT * FROM read_csv({f!r}, delim=';', header=true, encoding='latin-1',
                                all_varchar=true, ignore_errors=false)"""
         if not tem_tabela:
@@ -145,7 +146,8 @@ def build_tables(con):
     """)
     return con
 
-def analyze(foco, out="out/piloto"):
+def analyze(foco, out=None):
+    out = out or str(cfg.OUT / "piloto")
     import duckdb, pandas as pd
     OUT = Path(out); OUT.mkdir(parents=True, exist_ok=True)
     con = duckdb.connect(str(DB), read_only=True)
@@ -233,9 +235,14 @@ def analyze(foco, out="out/piloto"):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["download", "load", "analyze"])
-    ap.add_argument("--uf", nargs="*", default=NORDESTE + ["SP", "RS", "MG", "PR"])
+    ap.add_argument("--uf", nargs="*", default=NORDESTE + ["SP", "RS", "MG", "PR"], help="UFs ou ALL")
     ap.add_argument("--foco", nargs="*", default=["CE", "BA"])
-    ap.add_argument("--out", default="out/piloto", help="pasta de saída do analyze")
+    ap.add_argument("--out", default=str(cfg.OUT / "piloto"), help="pasta de saída do analyze")
+    ap.add_argument("--stamp", help="carimbo DDMMAAAAHHMM do arquivo de BU (2º turno); fica gravado em data/2t/STAMP")
     a = ap.parse_args()
-    {"download": lambda: download(a.uf), "load": lambda: load(a.uf),
+    if a.stamp:
+        cfg.gravar_stamp(a.stamp); cfg.STAMP = STAMP = a.stamp
+    ufs = UFS_ALL if a.uf == ["ALL"] else a.uf
+    print(f"[config] {cfg.resumo()}")
+    {"download": lambda: download(ufs), "load": lambda: load(ufs),
      "analyze": lambda: analyze(a.foco, a.out)}[a.cmd]()

@@ -56,11 +56,15 @@ A metodologia detalhada, incluindo o mapeamento do layout do BU 2026, as mensage
 ├── logs_brasil.py          # varredura nacional dos logs (paralela, retomável) -> Parquet
 ├── analise_logs_brasil.py  # análise da varredura: quantis, flags, locais e municípios
 ├── reproduzir.sh           # encadeia tudo, na ordem (ver docs/REPRODUCAO.md antes)
+├── config.py               # TURNO=1|2: pleito, carimbo, dia, caminhos (data/, out/ ou data/2t/, out/2t/)
+├── aguardar_2t.py          # vigia a publicação do 2º turno; --auto baixa, carrega e analisa o BU
+├── comparar_turnos.py      # 1º × 2º turno por seção e por urna, com as predições registradas
 ├── requirements.txt
 ├── docs/
 │   ├── METODOLOGIA.md      # layout, testes, critérios, limiares, mensagens do log
 │   ├── REPRODUCAO.md       # passo a passo, tempos, disco, o que pode falhar
-│   └── DADOS.md            # fontes, URLs, formatos, dicionário dos arquivos de saída
+│   ├── DADOS.md            # fontes, URLs, formatos, dicionário dos arquivos de saída
+│   └── ESCOPO_2T.md        # escopo do 2º turno, escrito antes dos dados: fases, predições, saídas
 ├── out/                    # resultados (versionados; arquivos > 20 MB ficam fora, ver DADOS.md)
 │   ├── piloto/             # fase 1  + RELATORIO.md
 │   ├── brasil/             # fase 2  + RELATORIO.md
@@ -109,6 +113,14 @@ python analise_logs_brasil.py --out out/logs_brasil
 ```
 
 `reproduzir.sh` executa exatamente essa sequência. Detalhes, tempos por etapa, uso de disco e os erros já conhecidos (e como foram tratados) estão em [`docs/REPRODUCAO.md`](docs/REPRODUCAO.md). Quem quiser apenas reanalisar sem baixar nada pode partir de `out/logs_brasil/secoes_logs_brasil.parquet` (497.895 urnas × 48 métricas) e de `out/brasil/secoes_flagradas_brasil.csv`.
+
+## 2º turno (25/10/2026)
+
+O escopo do 2º turno foi fixado **antes** da publicação dos dados, em [`docs/ESCOPO_2T.md`](docs/ESCOPO_2T.md): mesma pipeline com `TURNO=2` (pleito 3221), comparação seção a seção e urna a urna com o 1º turno, e dez predições registradas (encerramento tardio encolhe com a cédula curta, taxa manual persiste na mesma urna física, Bom Lugar repete ou não) verificadas mecanicamente por `comparar_turnos.py`. Para acompanhar a publicação:
+
+```bash
+python aguardar_2t.py --once
+```
 
 ## Dados
 

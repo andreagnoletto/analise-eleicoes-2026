@@ -20,8 +20,9 @@ from pathlib import Path
 import numpy as np, pandas as pd
 import pipeline_bu as pb
 import logs_urna as lu
+import config as cfg
 
-PQ = Path("data/logs_parquet"); OUT = Path("out/logs_brasil"); RAW = lu.RAW
+PQ = cfg.PQ; OUT = cfg.OUT / "logs_brasil"; RAW = lu.RAW
 ORDEM = "ZZ RR AP AC TO RO SE DF AL MS RN AM MT ES PI PB GO SC MA PA PE CE PR RS BA RJ MG SP".split()
 
 

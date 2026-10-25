@@ -10,8 +10,9 @@ from pathlib import Path
 import numpy as np, pandas as pd, duckdb
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 import pipeline_bu as pb
+import config as cfg
 
-PQ = "data/logs_parquet"
+PQ = cfg.PQ.as_posix()
 INK, INK2, MUTED, GRID, SURF = "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#fcfcfb"
 plt.rcParams.update({"figure.facecolor": SURF, "axes.facecolor": SURF, "axes.edgecolor": "#c3c2b7", "axes.labelcolor": INK2,
                      "xtick.color": MUTED, "ytick.color": MUTED, "axes.grid": True, "grid.color": GRID, "grid.linewidth": 0.6,
@@ -170,4 +171,4 @@ def main(out):
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("--out", default="out/logs_brasil"); a = ap.parse_args(); main(a.out)
+    ap = argparse.ArgumentParser(); ap.add_argument("--out", default=str(cfg.OUT / "logs_brasil")); a = ap.parse_args(); main(a.out)

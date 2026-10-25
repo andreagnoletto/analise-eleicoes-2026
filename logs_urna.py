@@ -20,11 +20,12 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import numpy as np, pandas as pd
 import pipeline_bu as pb
+import config as cfg
 
-PLEITO = "3220"
-BASE = f"https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/{PLEITO}/dados"
-OUT = Path("out/logs"); RAW = Path("data/logs/raw"); TXT = Path("data/logs/txt")
-DIA = "04/10/2026"
+PLEITO = cfg.PLEITO
+BASE = cfg.LOGS_BASE
+OUT = cfg.OUT / "logs"; RAW = cfg.LOGS_RAW; TXT = cfg.LOGS_TXT
+DIA = cfg.DIA
 PALETA = ["#eb6834", "#eda100", "#2a78d6", "#1baf7a", "#e87ba4", "#4a3aa7"]
 GRUPOS, COR = [], {}   # definidos em analisar() a partir da amostra (grupos de controle contêm "controle" no nome)
 
@@ -39,7 +40,7 @@ def selecionar(n_ctrl_mun=3, n_ctrl_nac=150, seed=2026):
     OUT.mkdir(parents=True, exist_ok=True)
     con = duckdb.connect(str(pb.DB), read_only=True)
     pb.build_tables(con)
-    fl = pd.read_csv("out/brasil/secoes_flagradas_brasil.csv")
+    fl = pd.read_csv(cfg.OUT / "brasil" / "secoes_flagradas_brasil.csv")
     A = fl[fl.flag_cal].copy(); A["grupo"] = "A_calibrado"
     B = fl[fl.flag_tard & ~fl.flag_cal].sort_values("z_manual", ascending=False).head(25).copy(); B["grupo"] = "B_manual_tardia"
     cols = ["grupo", "SG_UF", "CD_MUNICIPIO", "NM_MUNICIPIO", "NR_ZONA", "NR_SECAO", "NR_LOCAL_VOTACAO",
@@ -208,6 +209,49 @@ def parsear():
     return s
 
 
+def selecionar_2t(n_delta=100, n_ctrl_mun=2, n_ctrl_nac=150, seed=2026):
+    """Amostra dirigida do 2º turno (TURNO=2). Requer out/2t/brasil/secoes_flagradas_brasil.csv (analise_brasil.py)
+    e out/2t/comparacao/23_flag_delta.csv (comparar_turnos.py bu).
+      G_2t_calibrado            : todas as seções flag_cal do 2º turno
+      H_delta_conjunto          : até n_delta seções em que Δmanual e Δcomparecimento (2t−1t) são conjuntamente anômalos no município
+      I_bom_lugar_maranhaozinho : TODAS as seções de Bom Lugar (7285) e Maranhãozinho (7927), MA — teste de repetição do achado do 1º turno
+      J_controle_municipio      : n_ctrl_mun aleatórias do mesmo município de cada seção de G e H
+      K_controle_nacional       : n_ctrl_nac aleatórias do país, aptos >= 100"""
+    import duckdb
+    OUT.mkdir(parents=True, exist_ok=True)
+    con = duckdb.connect(str(pb.DB), read_only=True)
+    pb.build_tables(con)
+    z = con.execute("""SELECT SG_UF, CD_MUNICIPIO, NM_MUNICIPIO, NR_ZONA, NR_SECAO, NR_LOCAL_VOTACAO, aptos, comp, bio_nh,
+                              tx_manual, tx_comp, z_manual, z_comp, n_mun, min_apos_fech
+                       FROM z WHERE SG_UF <> 'ZZ'""").df()
+    for c in ["CD_MUNICIPIO", "NR_ZONA", "NR_SECAO"]: z[c] = z[c].astype(int)
+    z["k"] = z.apply(key, axis=1); z["ref"] = ""
+    fl = pd.read_csv(cfg.OUT / "brasil" / "secoes_flagradas_brasil.csv")
+    G = z[z.k.isin(set(fl[fl.flag_cal].apply(key, axis=1)))].copy(); G["grupo"] = "G_2t_calibrado"
+    p_delta = cfg.OUT / "comparacao" / "23_flag_delta.csv"
+    if p_delta.exists():
+        d = pd.read_csv(p_delta).sort_values("z_dmanual", ascending=False).head(n_delta)
+        H = z[z.k.isin(set(d.apply(key, axis=1)))].copy()
+    else:
+        print(f"AVISO: {p_delta} não existe (rode comparar_turnos.py bu); grupo H vazio"); H = z.iloc[0:0].copy()
+    H["grupo"] = "H_delta_conjunto"
+    I = z[(z.SG_UF == "MA") & (z.CD_MUNICIPIO.isin([7285, 7927]))].copy(); I["grupo"] = "I_bom_lugar_maranhaozinho"
+    rng = np.random.default_rng(seed); usados = set(G.k) | set(H.k) | set(I.k); ctrl = []
+    for _, f in pd.concat([G, H]).iterrows():
+        pool = z[(z.SG_UF == f.SG_UF) & (z.CD_MUNICIPIO == f.CD_MUNICIPIO) & ~z.k.isin(usados) & (z.aptos >= 100)]
+        for i in rng.choice(len(pool), size=min(n_ctrl_mun, len(pool)), replace=False):
+            r = pool.iloc[i].copy(); r["grupo"] = "J_controle_municipio"; r["ref"] = f.k; ctrl.append(r); usados.add(r.k)
+    J = pd.DataFrame(ctrl)
+    pool = z[~z.k.isin(usados) & (z.aptos >= 100)]
+    K = pool.sample(n=n_ctrl_nac, random_state=seed).copy(); K["grupo"] = "K_controle_nacional"
+    cols = ["grupo", "SG_UF", "CD_MUNICIPIO", "NM_MUNICIPIO", "NR_ZONA", "NR_SECAO", "NR_LOCAL_VOTACAO",
+            "aptos", "comp", "bio_nh", "tx_manual", "tx_comp", "z_manual", "z_comp", "min_apos_fech", "ref", "k"]
+    am = pd.concat([G, H, I, J, K])[cols].drop_duplicates("k")
+    am.to_csv(OUT / "00_amostra.csv", index=False)
+    print(am.grupo.value_counts().to_string())
+    print(am.groupby("grupo").SG_UF.value_counts().unstack(fill_value=0).to_string())
+
+
 # ------------------------------------------------------------------ analisar
 def selecionar_ne(n_susp=1000, n_ctrl=300, max_min_apos=30, seed=2026):
     """Nordeste, urnas que fecharam no horário normal (até max_min_apos min após 17h), aptos >= 100.
@@ -347,8 +391,9 @@ def analisar():
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["selecionar", "selecionar_ne", "baixar", "parsear", "analisar"])
-    ap.add_argument("--out", default="out/logs", help="pasta da amostra/saídas (ex.: out/logs_ne)")
+    ap.add_argument("cmd", choices=["selecionar", "selecionar_ne", "selecionar_2t", "baixar", "parsear", "analisar"])
+    ap.add_argument("--out", default=str(cfg.OUT / "logs"), help="pasta da amostra/saídas (ex.: out/logs_ne)")
     a = ap.parse_args()
     OUT = Path(a.out)
-    {"selecionar": selecionar, "selecionar_ne": selecionar_ne, "baixar": baixar, "parsear": parsear, "analisar": analisar}[a.cmd]()
+    {"selecionar": selecionar, "selecionar_ne": selecionar_ne, "selecionar_2t": selecionar_2t,
+     "baixar": baixar, "parsear": parsear, "analisar": analisar}[a.cmd]()
