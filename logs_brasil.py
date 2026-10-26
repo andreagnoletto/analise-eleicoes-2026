@@ -23,6 +23,7 @@ import logs_urna as lu
 import config as cfg
 
 PQ = cfg.PQ; OUT = cfg.OUT / "logs_brasil"; RAW = lu.RAW
+BU_DO_TURNO = True   # False quando a lista de seções vem do BU de outro turno (campos bu_* ficam nulos)
 ORDEM = "ZZ RR AP AC TO RO SE DF AL MS RN AM MT ES PI PB GO SC MA PA PE CE PR RS BA RJ MG SP".split()
 
 
@@ -82,7 +83,8 @@ def metricas(r, el, info):
         return (sum(e["tipo"] == "manual" for e in b) / len(b)) if len(b) >= 10 else np.nan
     return {"k": r.k, "SG_UF": r.SG_UF, "CD_MUNICIPIO": int(r.CD_MUNICIPIO), "NR_ZONA": int(r.NR_ZONA), "NR_SECAO": int(r.NR_SECAO),
             "NR_LOCAL_VOTACAO": int(r.NR_LOCAL_VOTACAO), "modelo": info["modelo"],
-            "bu_aptos": int(r.aptos), "bu_comp": int(r.comp), "bu_bio_nh": int(r.bio_nh), "bu_min_apos_fech": r.min_apos_fech,
+            "bu_aptos": int(r.aptos) if BU_DO_TURNO else None, "bu_comp": int(r.comp) if BU_DO_TURNO else None,
+            "bu_bio_nh": int(r.bio_nh) if BU_DO_TURNO else None, "bu_min_apos_fech": r.min_apos_fech if BU_DO_TURNO else None,
             "log_habilitados": len(el), "log_votos": len(votos), "log_bio": len(bio), "log_manual": len(man),
             "log_sem_biometria": sum(e["tipo"] == "sem_biometria" for e in el), "log_outro": sum(e["tipo"] == "outro" for e in el),
             "t_encerrar": t_enc, "primeiro_voto": tv[0] if tv else None, "ultimo_voto": tv[-1] if tv else None,
@@ -171,7 +173,12 @@ if __name__ == "__main__":
     a = ap.parse_args()
     PQ.mkdir(parents=True, exist_ok=True); OUT.mkdir(parents=True, exist_ok=True); RAW.mkdir(parents=True, exist_ok=True)
     import duckdb
-    con = duckdb.connect(str(pb.DB), read_only=True); pb.build_tables(con)
+    db = pb.DB
+    if not db.exists() and cfg.TURNO == 2 and Path("data/bu2026.duckdb").exists():
+        # BU do 2º turno ainda não publicado: a lista de seções vem do 1º turno e os campos bu_* ficam nulos
+        db = Path("data/bu2026.duckdb"); BU_DO_TURNO = False
+        log(f"AVISO: {pb.DB} não existe; usando a lista de seções do 1º turno ({db}); campos bu_* ficam nulos")
+    con = duckdb.connect(str(db), read_only=True); pb.build_tables(con)
     ufs = ORDEM if a.uf == ["ALL"] else a.uf
     for uf in ufs:
         try: scan_uf(uf, a.workers, con)

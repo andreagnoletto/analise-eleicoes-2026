@@ -1,0 +1,22 @@
+21:59:31 AVISO: data\2t\bu2026_2t.duckdb não existe; usando a lista de seções do 1º turno (data\bu2026.duckdb); campos bu_* ficam nulos
+21:59:33 [ZZ] 1309 urnas, 24 conexões
+22:02:38 [ZZ] 1000/1309 (76%) 3.1 min, 5.4 urnas/s, falhas 287
+22:03:38 [ZZ] 1309/1309 (100%) 4.1 min, 5.3 urnas/s, falhas 376
+22:03:38 [ZZ] concluída: 933 urnas em 4.1 min, 376 falhas; comp bate 0/933, manual bate 0/933
+22:03:38 [RR] 1519 urnas, 24 conexões
+22:05:56 [RR] 1000/1519 (66%) 2.3 min, 7.2 urnas/s, falhas 0
+22:07:04 [RR] 1519/1519 (100%) 3.4 min, 7.4 urnas/s, falhas 3
+22:07:05 [RR] concluída: 1516 urnas em 3.4 min, 3 falhas; comp bate 0/1516, manual bate 0/1516
+22:07:05 [AP] 1914 urnas, 24 conexões
+22:09:37 [AP] 1000/1914 (52%) 2.5 min, 6.6 urnas/s, falhas 2
+22:11:52 [AP] 1914/1914 (100%) 4.8 min, 6.7 urnas/s, falhas 2
+22:11:53 [AP] concluída: 1912 urnas em 4.8 min, 2 falhas; comp bate 0/1912, manual bate 0/1912
+22:11:53 [AC] 2270 urnas, 24 conexões
+22:14:21 [AC] 1000/2270 (44%) 2.5 min, 6.8 urnas/s, falhas 0
+22:16:48 [AC] 2000/2270 (88%) 4.9 min, 6.8 urnas/s, falhas 0
+22:17:25 [AC] 2270/2270 (100%) 5.5 min, 6.8 urnas/s, falhas 0
+22:17:26 [AC] concluída: 2270 urnas em 5.5 min, 0 falhas; comp bate 0/2270, manual bate 0/2270
+22:17:26 [TO] 4384 urnas, 24 conexões
+22:20:14 [TO] 1000/4384 (23%) 2.8 min, 5.9 urnas/s, falhas 0
+22:22:51 [TO] 2000/4384 (46%) 5.4 min, 6.1 urnas/s, falhas 0
+22:25:26 [TO] 3000/4384 (68%) 8.0 min, 6.2 urnas/s, falhas 0

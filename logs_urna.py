@@ -26,7 +26,7 @@ PLEITO = cfg.PLEITO
 BASE = cfg.LOGS_BASE
 OUT = cfg.OUT / "logs"; RAW = cfg.LOGS_RAW; TXT = cfg.LOGS_TXT
 DIA = cfg.DIA
-PALETA = ["#eb6834", "#eda100", "#2a78d6", "#1baf7a", "#e87ba4", "#4a3aa7"]
+PALETA = ["#eb6834", "#eda100", "#2a78d6", "#1baf7a", "#e87ba4", "#4a3aa7", "#008300", "#e34948", "#898781"]
 GRUPOS, COR = [], {}   # definidos em analisar() a partir da amostra (grupos de controle contêm "controle" no nome)
 
 
@@ -209,6 +209,35 @@ def parsear():
     return s
 
 
+def selecionar_repeticao():
+    """2º turno, antes do BU: as MESMAS urnas investigadas no 1º turno (amostras de out/logs, out/logs_ne e
+    out/logs_bomlugar) mais todas as seções de Bom Lugar (7285) e Maranhãozinho (7927), MA, listadas no BU do 1º turno.
+    Os grupos mantêm os nomes do 1º turno; os campos de BU (aptos, comp, bio_nh, min_apos_fech) ficam vazios
+    porque o BU do 2º turno ainda não existe. Saída: <out>/00_amostra.csv"""
+    import duckdb
+    OUT.mkdir(parents=True, exist_ok=True)
+    partes = []
+    for p in ["out/logs/00_amostra.csv", "out/logs_ne/00_amostra.csv", "out/logs_bomlugar/00_amostra.csv"]:
+        if Path(p).exists(): partes.append(pd.read_csv(p))
+    am = pd.concat(partes, ignore_index=True)
+    con = duckdb.connect("data/bu2026.duckdb", read_only=True); pb.build_tables(con)
+    bl = con.execute("""SELECT SG_UF, CD_MUNICIPIO, NM_MUNICIPIO, NR_ZONA, NR_SECAO, NR_LOCAL_VOTACAO, aptos, comp, bio_nh,
+                               tx_manual, tx_comp, z_manual, z_comp, n_mun, min_apos_fech
+                        FROM z WHERE SG_UF = 'MA' AND CAST(CD_MUNICIPIO AS INT) IN (7285, 7927)""").df()
+    for c in ["CD_MUNICIPIO", "NR_ZONA", "NR_SECAO"]: bl[c] = bl[c].astype(int)
+    bl["k"] = bl.apply(key, axis=1); bl["grupo"] = "I_bom_lugar_maranhaozinho"; bl["ref"] = ""
+    am = pd.concat([am, bl[~bl.k.isin(set(am.k))]], ignore_index=True).drop_duplicates("k")
+    am["grupo"] = am.grupo.where(~am.grupo.str.startswith("G_bom_lugar"), "I_bom_lugar_maranhaozinho")
+    for c in ["aptos", "comp", "bio_nh", "min_apos_fech"]: am[c] = np.nan   # BU do 2º turno indisponível
+    cols = ["grupo", "SG_UF", "CD_MUNICIPIO", "NM_MUNICIPIO", "NR_ZONA", "NR_SECAO", "NR_LOCAL_VOTACAO",
+            "aptos", "comp", "bio_nh", "tx_manual", "tx_comp", "z_manual", "z_comp", "min_apos_fech", "ref", "k"]
+    for c in cols:
+        if c not in am.columns: am[c] = np.nan
+    am = am[cols]
+    am.to_csv(OUT / "00_amostra.csv", index=False)
+    print(am.grupo.value_counts().to_string()); print("total:", len(am))
+
+
 def selecionar_2t(n_delta=100, n_ctrl_mun=2, n_ctrl_nac=150, seed=2026):
     """Amostra dirigida do 2º turno (TURNO=2). Requer out/2t/brasil/secoes_flagradas_brasil.csv (analise_brasil.py)
     e out/2t/comparacao/23_flag_delta.csv (comparar_turnos.py bu).
@@ -329,9 +358,12 @@ def analisar():
             ax.plot(x, hm / max(hm.sum(), 1), color=COR[g], lw=1.6, ls="--", label=f"{g} — habilitações manuais")
             ax.set_xlabel(lab)
     axes[0].set_ylabel("fração das habilitações (bins de 30 min)"); axes[1].invert_xaxis()
-    axes[0].legend(fontsize=7, ncol=2); axes[0].set_title("Perfil ao longo do dia"); axes[1].set_title("Perfil relativo ao encerramento")
+    h, l = axes[0].get_legend_handles_labels()
+    ncol = 3 if len(l) > 8 else 2; nlin = (len(l) + ncol - 1) // ncol
+    fig.legend(h, l, fontsize=7, ncol=ncol, loc="lower center", bbox_to_anchor=(0.5, 0.0))
+    axes[0].set_title("Perfil ao longo do dia"); axes[1].set_title("Perfil relativo ao encerramento")
     fig.suptitle("Logs de urna: quando ocorrem as habilitações manuais vs todos os votos", color=INK)
-    fig.tight_layout(); fig.savefig(OUT / "04_perfil_horario.png"); plt.close(fig)
+    fig.tight_layout(rect=(0, 0.03 + 0.028 * nlin, 1, 0.97)); fig.savefig(OUT / "04_perfil_horario.png"); plt.close(fig)
 
     # scatter: fração de votos na última hora × fração de manuais na última hora
     fig, ax = plt.subplots(figsize=(6.5, 6))
@@ -391,9 +423,9 @@ def analisar():
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["selecionar", "selecionar_ne", "selecionar_2t", "baixar", "parsear", "analisar"])
+    ap.add_argument("cmd", choices=["selecionar", "selecionar_ne", "selecionar_2t", "selecionar_repeticao", "baixar", "parsear", "analisar"])
     ap.add_argument("--out", default=str(cfg.OUT / "logs"), help="pasta da amostra/saídas (ex.: out/logs_ne)")
     a = ap.parse_args()
     OUT = Path(a.out)
     {"selecionar": selecionar, "selecionar_ne": selecionar_ne, "selecionar_2t": selecionar_2t,
-     "baixar": baixar, "parsear": parsear, "analisar": analisar}[a.cmd]()
+     "selecionar_repeticao": selecionar_repeticao, "baixar": baixar, "parsear": parsear, "analisar": analisar}[a.cmd]()
