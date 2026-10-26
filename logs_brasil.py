@@ -167,21 +167,94 @@ def scan_uf(uf, workers, con_bu, chunk=4000):
         f"comp bate {int((df.log_votos == df.bu_comp).sum())}/{len(df)}, manual bate {int((df.log_manual == df.bu_bio_nh).sum())}/{len(df)}")
 
 
+# ------------------------------------------------------------------ reprocessar falhas
+def retry(workers, con_bu):
+    """Reprocessa as seções listadas em falhas.csv (ex.: logs ainda não publicados na noite da eleição).
+    Sucessos vão para secoes_retry.parquet e eleitores_retry.parquet (acumulados); o que falhar de novo fica em falhas.csv."""
+    import requests, duckdb
+    fp = PQ / "falhas.csv"
+    if not fp.exists(): log("[retry] não há falhas.csv"); return
+    ks = set(pd.read_csv(fp).k)
+    secs = con_bu.execute("""SELECT SG_UF, CD_MUNICIPIO, NM_MUNICIPIO, NR_ZONA, NR_SECAO, NR_LOCAL_VOTACAO, aptos, comp, bio_nh, min_apos_fech
+                             FROM z""").df()
+    for c in ["CD_MUNICIPIO", "NR_ZONA", "NR_SECAO", "NR_LOCAL_VOTACAO"]: secs[c] = secs[c].astype(int)
+    secs["k"] = secs.apply(lu.key, axis=1); secs = secs[secs.k.isin(ks)]
+    log(f"[retry] {len(secs)} seções em falhas.csv, {workers} conexões")
+    local = threading.local()
+    def sess():
+        if not hasattr(local, "s"):
+            local.s = requests.Session(); local.s.headers["User-Agent"] = "Mozilla/5.0 (analise-bu-2026)"
+        return local.s
+    def tarefa(r):
+        blob = baixar_uma(sess(), r); el, info = parse_blob(blob); return r, el, info
+    met, ele, falhas = [], [], []
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = {ex.submit(tarefa, r): r.k for _, r in secs.iterrows()}
+        for f in as_completed(futs):
+            try:
+                r, el, info = f.result(); met.append(metricas(r, el, info)); ele.extend(linhas_eleitores(r, el, info))
+            except Exception as e:
+                falhas.append({"uf": futs[f][:2].upper(), "k": futs[f], "erro": str(e)[:200]})
+    pq = duckdb.connect()
+    for nome, rows in [("secoes_retry.parquet", met), ("eleitores_retry.parquet", ele)]:
+        if not rows: continue
+        dst = PQ / nome; df = pd.DataFrame(rows)
+        if dst.exists():
+            antigo = pq.execute(f"SELECT * FROM '{dst.as_posix()}'").df()
+            df = pd.concat([antigo[~antigo.k.isin(set(df.k))], df], ignore_index=True)
+        pq.register("df", df); tmp = dst.with_suffix(".tmp.parquet")
+        pq.execute(f"COPY df TO '{tmp.as_posix()}' (FORMAT PARQUET, COMPRESSION ZSTD)"); pq.unregister("df"); tmp.replace(dst)
+    if falhas: pd.DataFrame(falhas).to_csv(fp, index=False)
+    else: fp.rename(PQ / "falhas_resolvidas.csv")
+    log(f"[retry] recuperadas {len(met)}; ainda falhando {len(falhas)}")
+
+
+# ------------------------------------------------------------------ anexar BU publicado depois dos logs
+def anexar_bu(con_bu):
+    """Preenche bu_aptos / bu_comp / bu_bio_nh / bu_min_apos_fech em todos os secoes_*.parquet com o BU do turno
+    (para a varredura feita antes da publicação do BU) e imprime a validação comparecimento/manual por arquivo."""
+    import duckdb
+    z = con_bu.execute("SELECT SG_UF, CD_MUNICIPIO, NR_ZONA, NR_SECAO, aptos, comp, bio_nh, min_apos_fech FROM z").df()
+    for c in ["CD_MUNICIPIO", "NR_ZONA", "NR_SECAO"]: z[c] = z[c].astype(int)
+    z["k"] = z.apply(lu.key, axis=1); z = z[["k", "aptos", "comp", "bio_nh", "min_apos_fech"]]
+    pq = duckdb.connect(); pq.register("z", z)
+    tot = [0, 0, 0, 0]
+    for p in sorted(PQ.glob("secoes_*.parquet")):
+        pq.execute(f"""CREATE OR REPLACE TABLE s AS
+            SELECT s.* EXCLUDE (bu_aptos, bu_comp, bu_bio_nh, bu_min_apos_fech),
+                   z.aptos bu_aptos, z.comp bu_comp, z.bio_nh bu_bio_nh, z.min_apos_fech bu_min_apos_fech
+            FROM '{p.as_posix()}' s LEFT JOIN z USING (k)""")
+        n, com, man, sem = pq.execute("""SELECT count(*), coalesce(sum((log_votos = bu_comp)::INT),0),
+                                                coalesce(sum((log_manual = bu_bio_nh)::INT),0), sum((bu_comp IS NULL)::INT) FROM s""").fetchone()
+        tmp = p.with_suffix(".tmp.parquet")
+        pq.execute(f"COPY s TO '{tmp.as_posix()}' (FORMAT PARQUET, COMPRESSION ZSTD)"); tmp.replace(p)
+        log(f"[anexar_bu] {p.name}: {n} urnas, sem BU {sem}; comp bate {com}/{n}, manual bate {man}/{n}")
+        for i, v in enumerate((n, com, man, sem)): tot[i] += v
+    log(f"[anexar_bu] total: {tot[0]} urnas, sem BU {tot[3]}; comp bate {tot[1]} ({100*tot[1]/max(tot[0],1):.3f}%), manual bate {tot[2]}")
+
+
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("cmd", choices=["scan"])
-    ap.add_argument("--uf", nargs="+", required=True); ap.add_argument("--workers", type=int, default=16)
+    ap = argparse.ArgumentParser(); ap.add_argument("cmd", choices=["scan", "retry", "anexar_bu"])
+    ap.add_argument("--uf", nargs="+", default=["ALL"]); ap.add_argument("--workers", type=int, default=16)
+    ap.add_argument("--db", help="DuckDB do BU a usar (padrão: o do turno; para testes)")
     a = ap.parse_args()
     PQ.mkdir(parents=True, exist_ok=True); OUT.mkdir(parents=True, exist_ok=True); RAW.mkdir(parents=True, exist_ok=True)
     import duckdb
-    db = pb.DB
+    db = Path(a.db) if a.db else pb.DB
     if not db.exists() and cfg.TURNO == 2 and Path("data/bu2026.duckdb").exists():
         # BU do 2º turno ainda não publicado: a lista de seções vem do 1º turno e os campos bu_* ficam nulos
         db = Path("data/bu2026.duckdb"); BU_DO_TURNO = False
         log(f"AVISO: {pb.DB} não existe; usando a lista de seções do 1º turno ({db}); campos bu_* ficam nulos")
     con = duckdb.connect(str(db), read_only=True); pb.build_tables(con)
-    ufs = ORDEM if a.uf == ["ALL"] else a.uf
-    for uf in ufs:
-        try: scan_uf(uf, a.workers, con)
-        except Exception as e:
-            log(f"[{uf}] ERRO FATAL: {e}"); raise
-    log("varredura concluída")
+    if a.cmd == "retry":
+        retry(a.workers, con)
+    elif a.cmd == "anexar_bu":
+        if not BU_DO_TURNO: raise SystemExit("anexar_bu precisa do BU do próprio turno (data/2t/bu2026_2t.duckdb ou --db)")
+        anexar_bu(con)
+    else:
+        ufs = ORDEM if a.uf == ["ALL"] else a.uf
+        for uf in ufs:
+            try: scan_uf(uf, a.workers, con)
+            except Exception as e:
+                log(f"[{uf}] ERRO FATAL: {e}"); raise
+        log("varredura concluída")
