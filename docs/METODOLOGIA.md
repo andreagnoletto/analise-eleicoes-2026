@@ -75,7 +75,7 @@ Para cada seção, `https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3
 | `Operador selecionou: Encerrar votação` | encerramento | `t_encerrar` |
 | `Dado digitado não confere` | mesário errou o dado pessoal na habilitação manual | taxa por 100 manuais |
 
-Validação: comparecimento do log = `QT_COMPARECIMENTO` em 99,995% das 509.155 urnas; manuais = `QT_ELEI_BIOM_SEM_HABILITACAO` em 98,1% e a ±1 em 99,9% (a diferença de 1 é habilitação manual sem voto concluído).
+Validação: comparecimento do log = `QT_COMPARECIMENTO` em 99,997% das 499.176 urnas; manuais = `QT_ELEI_BIOM_SEM_HABILITACAO` em 98,4% e a ±1 em 99,9% (a diferença de 1 é habilitação manual sem voto concluído).
 
 ### 4.3 Amostras (fases 3 e 4)
 

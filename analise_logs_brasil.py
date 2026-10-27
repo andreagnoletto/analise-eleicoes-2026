@@ -107,7 +107,9 @@ def main(out):
                            FROM loc l JOIN (SELECT DISTINCT SG_UF, CD_MUNICIPIO, NM_MUNICIPIO FROM s) m USING (SG_UF, CD_MUNICIPIO)
                            WHERE n_manual >= 30 AND n_bio >= 30 AND razao < {ql[0]} ORDER BY razao""").df() if False else None
     # NM_MUNICIPIO não está no parquet de seções; pega do BU
-    bu = duckdb.connect(str(pb.DB), read_only=True)
+    # nomes de município: do BU do turno; se ainda não publicado, do 1º turno (os nomes não mudam)
+    db_nm = pb.DB if pb.DB.exists() else Path("data/bu2026.duckdb")
+    bu = duckdb.connect(str(db_nm), read_only=True)
     nm = bu.execute("SELECT DISTINCT SG_UF, CAST(CD_MUNICIPIO AS INT) CD_MUNICIPIO, NM_MUNICIPIO FROM bu").df(); bu.close()
     con.register("nm", nm)
     locf = con.execute(f"""SELECT l.*, nm.NM_MUNICIPIO, round(l.n_manual*1.0/(l.n_manual+l.n_bio),3) tx_manual_local

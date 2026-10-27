@@ -6,7 +6,7 @@ Escrito em 25/10/2026, antes da publicação dos dados. Fixa o que será testado
 
 O 1º turno (relatórios em `out/*/RELATORIO.md`) concluiu que a habilitação manual não se concentra no fim da sessão em nenhuma escala, que o encerramento tardio do NE e N é tempo por eleitor, e que o único achado localizado é a razão de duração do voto manual/biométrico em Bom Lugar e Maranhãozinho (MA).
 
-O 2º turno é uma **segunda medição dos mesmos 509 mil pontos, em outro dia, com cédula mais curta** (Presidente em todo o país; Governador só nas UFs com 2º turno estadual). Isso permite três coisas que o 1º turno sozinho não permitia:
+O 2º turno é uma **segunda medição dos mesmos 499 mil pontos, em outro dia, com cédula mais curta** (Presidente em todo o país; Governador só nas UFs com 2º turno estadual). Isso permite três coisas que o 1º turno sozinho não permitia:
 
 1. **Teste de predições**: o modelo "encerramento tardio = tempo por eleitor × tamanho da seção" prevê que o atraso encolhe com uma cédula de 1 a 2 cargos. Se o NE continuar fechando tão tarde quanto no 1º turno com cédula curta, a explicação do 1º turno fica enfraquecida.
 2. **Persistência**: taxa de habilitação manual é propriedade do leitor biométrico e do eleitorado da seção. Deve se repetir na mesma urna física (`NR_URNA_EFETIVADA`) e no mesmo eleitorado. O que *muda* entre turnos, além do que o modelo e o eleitorado explicam, é o que merece atenção.

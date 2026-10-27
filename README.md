@@ -1,6 +1,6 @@
 # Eleições 2026 (1º turno): habilitação manual de eleitores nos Boletins de Urna e nos logs de urna
 
-Análise reprodutível de **todos os 509.207 Boletins de Urna (BU)** e de **todos os 509.155 logs de urna disponíveis** do 1º turno de 4 de outubro de 2026, publicados pelo TSE, para testar uma hipótese que circulou após a eleição:
+Análise reprodutível de **todos os 499.206 Boletins de Urna (BU)** e de **todos os 499.176 logs de urna disponíveis** do 1º turno de 4 de outubro de 2026, publicados pelo TSE, para testar uma hipótese que circulou após a eleição:
 
 > "A liberação manual de eleitores sem biometria (assinatura do mesário) se concentra no fim da sessão e é usada para votar no lugar de ausentes, sobretudo no Nordeste."
 
@@ -28,7 +28,7 @@ Os relatórios completos, com tabelas, gráficos e a lista de seções, estão e
 | Pergunta | Resposta | Onde |
 |---|---|---|
 | A taxa de habilitação manual é maior no Nordeste? | Não. Sul 8,1% > Nordeste 7,1%. O que determina a taxa é o **modelo da urna** (UE2013 11,2%, UE2015 9,7%, UE2020/2022 6,1%), presente em todas as UFs. | `out/brasil`, `out/logs_brasil` |
-| Há seções com manual anormalmente alto *e* comparecimento anormalmente alto, dentro do seu município? | 27 em 509 mil no critério calibrado (z dentro do município × tamanho da seção). Nordeste 12, Sudeste 9. Compatível com o acaso. | `out/brasil/secoes_flagradas_brasil.csv` |
+| Há seções com manual anormalmente alto *e* comparecimento anormalmente alto, dentro do seu município? | 27 em 499 mil no critério calibrado (z dentro do município × tamanho da seção). Nordeste 12, Sudeste 9. Compatível com o acaso. | `out/brasil/secoes_flagradas_brasil.csv` |
 | As habilitações manuais se concentram no fim da sessão? | **Não, em nenhuma escala.** Nas 1.000 urnas mais suspeitas do NE fechadas no horário, a fração de manuais na última hora (7,2%) é *menor* que a fração de votos (8,6%), igual aos controles. Nas 497.895 urnas do país, as 10 urnas acima do p99,9 têm 5 a 9 manuais cada, em 9 UFs. | `out/logs_ne`, `out/logs_brasil` |
 | Há votos após o horário? | Só continuação de fila. O NE e N fecham tarde (36% e 26% das seções > 30 min, contra 3% no Sul) porque o voto demora mais: MA e PI 63 s por eleitor contra 50 a 52 s em DF, SC, SP, RS. Acumulado em 250 eleitores, isso é 1 a 1,5 h. | `out/logs_brasil/03_tempo_voto_uf.csv` |
 | Sobrou algo? | Sim, de outra natureza. Em 95% das urnas o eleitor habilitado manualmente demora **mais** para votar que o biométrico (razão mediana 1,26). Em **Bom Lugar/MA** a razão é 0,785, a menor dos 5.520 municípios com ≥ 100 manuais; 17 das 39 urnas elegíveis são flagradas (esperado por acaso 0,04), em 6 dos 14 locais de votação. **Maranhãozinho/MA** é o segundo (0,967; 7 urnas, esperado 0,03). A urna zona 101 seção 138 de Maranhãozinho tem sequências de 6 e 8 eleitores manuais consecutivos votando em 23 a 47 s com o leitor funcionando para os demais. O voto em presidente nesses municípios não desvia do interior do MA. | `out/logs_brasil/06_*`, `out/logs_bomlugar` |
@@ -41,7 +41,7 @@ O estudo avançou em fases, cada uma com relatório próprio. A ordem importa: c
 2. **Brasil (BU, 27 UFs + exterior)** — rankings por UF e região, estratificação por tamanho de seção, modelo de urna (proxy pelo número de série, depois confirmado nos logs) e porte do município, padronização direta para testar regionalidade. `out/brasil/`.
 3. **Logs, amostra dirigida (358 urnas)** — seções flagradas no BU e controles do mesmo município e nacionais. Primeira leitura do log eleitor a eleitor. `out/logs/`.
 4. **Logs, Nordeste (1.300 urnas)** — as 1.000 urnas do NE com maior z de manual, comparecimento acima da média e fechadas no horário (o cenário em que "votar por ausentes" deixaria rastro), mais 300 controles. Surgiu o achado de Bom Lugar. `out/logs_ne/`, `out/logs_bomlugar/`.
-5. **Logs, varredura nacional (509.155 urnas)** — o critério de Bom Lugar (razão de duração do voto manual/biométrico) e os demais aplicados a todas as urnas, com quantis nacionais e agregação por local de votação e município. `out/logs_brasil/`.
+5. **Logs, varredura nacional (499.176 urnas)** — o critério de Bom Lugar (razão de duração do voto manual/biométrico) e os demais aplicados a todas as urnas, com quantis nacionais e agregação por local de votação e município. `out/logs_brasil/`.
 
 A metodologia detalhada, incluindo o mapeamento do layout do BU 2026, as mensagens do log usadas e cada critério com seus limiares, está em [`docs/METODOLOGIA.md`](docs/METODOLOGIA.md).
 
@@ -76,7 +76,7 @@ A metodologia detalhada, incluindo o mapeamento do layout do BU 2026, as mensage
     ├── raw/                # 28 ZIPs do TSE (4,7 GB), nunca alterados
     ├── csv/                # CSVs extraídos (36 GB)
     ├── bu2026.duckdb       # banco com os 67,9 milhões de linhas do BU (4,2 GB)
-    ├── logs/raw/           # 509 mil log.jez (51 GB)
+    ├── logs/raw/           # 499 mil log.jez (51 GB)
     ├── logs/txt/           # logs extraídos das amostras (fases 3 e 4)
     └── logs_parquet/       # métricas por urna e 118 milhões de habilitações (950 MB)
 ```
@@ -122,6 +122,8 @@ O escopo do 2º turno foi fixado **antes** da publicação dos dados, em [`docs/
 python aguardar_2t.py --once
 ```
 
+Resultados já publicados do 2º turno (logs, antes do BU): [`out/2t/logs_rep/RELATORIO.md`](out/2t/logs_rep/RELATORIO.md) (as mesmas 1.725 urnas do 1º turno) e [`out/2t/logs_brasil/RELATORIO.md`](out/2t/logs_brasil/RELATORIO.md) (varredura nacional, 499.177 urnas). Em resumo: a hipótese não se sustenta de novo, o encerramento tardio do Nordeste desapareceu com a cédula de um cargo, e Bom Lugar não repetiu.
+
 ## Dados
 
 Todos os dados são públicos e vêm do TSE:
@@ -138,7 +140,7 @@ Os brutos não são redistribuídos aqui (100 GB) e **nunca são alterados** pel
 - **Horários são do relógio local da urna.** AC fecha às 15h locais; AM, MT, MS, RO e RR às 16h; demais às 17h. Todas as métricas de "minutos após o encerramento previsto" levam isso em conta.
 - **`DS_TIPO_URNA` no BU 2026 não é o modelo da urna**, é o status da apuração. O modelo vem do log (`Identificação do Modelo de Urna`); no BU usamos o número de série apenas como proxy.
 - **Seções agregadas** (`DS_SECOES_AGREGADAS`) não têm BU próprio e aparecem dentro da seção principal.
-- **Cobertura dos logs:** 509.155 de 509.207 urnas apuradas. Faltam 28 no exterior e 2 em MG sem arquivo de log no portal; 22 falhas de conexão no RS foram recuperadas. O comparecimento do log bate com o BU em 99,995% das urnas.
+- **Cobertura dos logs:** 499.176 de 499.206 urnas apuradas. Faltam 28 no exterior e 2 em MG sem arquivo de log no portal; 22 falhas de conexão no RS foram recuperadas. O comparecimento do log bate com o BU em 99,997% das urnas.
 - **Os limiares são escolhas.** z > 3 dentro do município, aptos ≥ 100, quantis nacionais p0,1 / p99,9: todos estão documentados e são parâmetros nos scripts. Mudá-los muda a lista de seções flagradas, não as conclusões.
 
 ## Como contribuir

@@ -1,10 +1,12 @@
-# Logs de urna — varredura nacional (509.155 urnas, 1º turno 2026)
+# Logs de urna — varredura nacional (499.176 urnas, 1º turno 2026)
 
 Fonte: portal de resultados do TSE, uma requisição `aux.json` + um `log.jez` por seção. Script `logs_brasil.py` (32 conexões, retomável), 15,5 h de execução, `.jez` brutos em `data/logs/raw/` (~51 GB), métricas por urna e 1 linha por habilitação em `data/logs_parquet/` (Parquet). Análise em `analise_logs_brasil.py`.
 
-Cobertura: 509.207 urnas apuradas no BU; 509.155 processadas. Faltam 52: 28 no exterior (ZZ) e 2 em MG sem arquivo de log no portal (as mesmas sem hora de encerramento no BU) e 22 no RS que falharam por conexão e foram recuperadas depois (incluídas). ZZ (sem biometria, só presidente) entra apenas na validação.
+Cobertura: 499.206 urnas apuradas no BU; 499.176 processadas. Faltam 30: 28 no exterior (ZZ) e 2 em MG sem arquivo de log no portal (as mesmas sem hora de encerramento no BU) e 22 no RS que falharam por conexão e foram recuperadas depois (incluídas). ZZ (sem biometria, só presidente) entra apenas na validação.
 
-**Validação contra o BU:** comparecimento do log = `QT_COMPARECIMENTO` em 509.129 de 509.155 urnas (99,995%); habilitações manuais = `QT_ELEI_BIOM_SEM_HABILITACAO` em 98,1% e a ±1 em 99,9% (a diferença de 1 é um eleitor habilitado manualmente que não concluiu o voto).
+**Validação contra o BU:** comparecimento do log = `QT_COMPARECIMENTO` em 499.160 de 499.176 urnas (99,997%); habilitações manuais = `QT_ELEI_BIOM_SEM_HABILITACAO` em 98,4% e a ±1 em 99,9% (a diferença de 1 é um eleitor habilitado manualmente que não concluiu o voto).
+
+> **Errata (26/10/2026):** a cobertura estava grafada como 509 mil urnas por um erro de soma; o número correto, conferido em `01_validacao_uf.csv`, é 499.206 seções apuradas no BU e 499.176 logs processados. Os números por UF, os quantis e todas as conclusões não mudam.
 
 ## Resumo executivo
 

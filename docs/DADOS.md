@@ -6,7 +6,7 @@
 |---|---|---|---|
 | Boletim de Urna Web, 1º turno | `https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/buweb/bweb_1t_<UF>_051020261403.zip` (+ `.zip.sha512`) | ZIP com CSV `;` Latin-1 e `_leiame-boletimurnaweb.pdf` | 4,7 GB (28 ZIPs), 36 GB extraído |
 | Índice de arquivos da seção | `https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/dados/<uf>/<mun5>/<zona4>/<sec4>/p003220-<uf>-m<mun5>-z<zona4>-s<sec4>-aux.json` | JSON (`hashes[].hash`, `hashes[].arq[].nm/tp`) | ~1 KB cada |
-| Log de urna | `<pasta da seção>/<hash>/o03220<uf><mun5><zona4><sec4>-log.jez` | ZIP com `logd.dat` (TAB, Latin-1); pode conter outro `.jez` aninhado | 51 GB (509.155 arquivos) |
+| Log de urna | `<pasta da seção>/<hash>/o03220<uf><mun5><zona4><sec4>-log.jez` | ZIP com `logd.dat` (TAB, Latin-1); pode conter outro `.jez` aninhado | 51 GB (499.176 arquivos) |
 
 Página do dataset: <https://dadosabertos.tse.jus.br/dataset/resultados-2026-boletim-de-urna>. Pleito 3220; eleições 6257 e 6259; data da votação 04/10/2026.
 

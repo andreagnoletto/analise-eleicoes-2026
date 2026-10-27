@@ -1,6 +1,6 @@
 # Brasil inteiro — Boletins de Urna 1º turno 2026 (27 UFs + ZZ)
 
-Dados: `bweb_1t_<UF>_051020261403.zip`, 28 arquivos, SHA-512 conferido em todos (0 falhas). 67,9 milhões de linhas, **509.207 urnas/BUs**. Votação em 04/10/2026. Unidade: 1 linha por urna (seções agregadas estão somadas na agregadora). Todas as urnas constam como `Apurada`. ZZ (exterior) tem `QT_ELEI_BIOM_SEM_HABILITACAO = 0` em todas as 1.309 urnas (sem biometria no exterior) e fica fora dos testes de habilitação manual.
+Dados: `bweb_1t_<UF>_051020261403.zip`, 28 arquivos, SHA-512 conferido em todos (0 falhas). 67,9 milhões de linhas, **499.206 urnas/BUs**. Votação em 04/10/2026. Unidade: 1 linha por urna (seções agregadas estão somadas na agregadora). Todas as urnas constam como `Apurada`. ZZ (exterior) tem `QT_ELEI_BIOM_SEM_HABILITACAO = 0` em todas as 1.309 urnas (sem biometria no exterior) e fica fora dos testes de habilitação manual.
 
 Três critérios de "seção suspeita" rodaram lado a lado:
 - **orig**: z_manual > 3 e z_comp > 2 no município, n_mun ≥ 8 (critério original do plano).
@@ -11,7 +11,7 @@ Três critérios de "seção suspeita" rodaram lado a lado:
 
 1. Consistência interna: zero erros nas 28 UFs (aptos = comparecimento + abstenções; manual ≤ comparecimento). Só 2 urnas em MG e 28 no ZZ não têm hora de encerramento.
 2. A taxa de habilitação manual **não destaca o Nordeste**: PI (9,0%) lidera, mas RS (8,6%), MS (8,0%) e SC (7,8%) vêm logo atrás; por região, Sul 8,1% > NE 7,1% > CO 6,8% > SE 6,6% > N 5,5%. Controlando por tamanho da seção, série da urna e porte do município, NE fica em 6,8% e Sul em 7,9%.
-3. Seções suspeitas: o critério original flagra 116 urnas e 96% delas estão no quartil de seções pequenas; o calibrado flagra **27 em 509 mil** (NE 12, SE 9, N 5, CO 1, S 0). NE tem 0,085‰ contra 0,044‰ no SE, mas são 12 contra 9 casos e os maiores valores por UF são AP, TO, SE e ES. Não há sinal regional.
+3. Seções suspeitas: o critério original flagra 116 urnas e 96% delas estão no quartil de seções pequenas; o calibrado flagra **27 em 499 mil** (NE 12, SE 9, N 5, CO 1, S 0). NE tem 0,085‰ contra 0,044‰ no SE, mas são 12 contra 9 casos e os maiores valores por UF são AP, TO, SE e ES. Não há sinal regional.
 4. O único padrão regional forte é o **encerramento tardio**: 36% das urnas do NE e 26% do N fecham > 30 min após o horário, contra 3% no Sul. Isso persiste controlando por tamanho, série e porte (NE 37% padronizado), portanto é vazão por eleitor, não composição. Mas os votos sem digital em urnas tardias são proporcionais ao comparecimento nessas urnas em todas as UFs (razão 1,0 a 1,6, e **menor** no NE que no Sul/SE), e, condicionado a fechar tarde, a chance de uma urna ser flagrada por manual alto é menor no NE (BA 12‰, PE 9‰) do que em ES (57‰), PR (35‰), SP (28‰).
 5. **Veredito do teste de regionalidade (passo 13): a hipótese "fraude por habilitação manual no Nordeste" não se sustenta nos BUs.** NE não se destaca nos testes 3 e 4 após controles. As urnas que o critério "manual × tardia" seleciona são, na maioria, leitores biométricos inoperantes (taxa manual 80–98%) em capitais de todas as regiões (Belo Horizonte, Cuiabá, Rio, Brasília, Serra, Americana, Caruaru). O que falta para fechar a questão é o log das urnas listadas ao final.
 

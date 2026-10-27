@@ -1,0 +1,6 @@
+id,predicao,valor,ok
+L1,duração mediana do voto cai em todas as UFs (cédula de 1–2 cargos contra 5–6),27/27 UFs,True
+L2,"ordem das UFs por tempo de voto se mantém (MA/PI/PA no topo): corr de postos > 0,7",0.500,False
+L3,"taxa manual por modelo se repete (UE2013 > UE2015 > UE2020 ≈ UE2022), diferença por modelo < 2 pp","UE2013: 11.1%→10.9%, UE2015: 9.7%→9.8%, UE2020: 6.1%→6.2%, UE2022: 6.1%→6.2%",True
+L4,manuais no fim da sessão continuam sem concentração: mediana da razão manual/votos na última hora ≤ 1 por UF,27/27 UFs,True
+L5,"Bom Lugar: se o padrão é operacional/estável, os locais 1104, 1120, 1198, 1171 repetem razão < 0,8; se foi do dia, voltam a > 1",1104: 0.59→0.82; 1171: 0.60→1.10; 1015: 0.72→1.20; 1147: 0.93→1.11; 1139: 0.97→1.00; 1074: 1.01→1.09; 1058: 1.05→1.20; 1112: 1.12→1.09; 1180: 1.16→1.25,
