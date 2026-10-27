@@ -59,6 +59,7 @@ A metodologia detalhada, incluindo o mapeamento do layout do BU 2026, as mensage
 ├── config.py               # TURNO=1|2: pleito, carimbo, dia, caminhos (data/, out/ ou data/2t/, out/2t/)
 ├── aguardar_2t.py          # vigia a publicação do 2º turno; --auto baixa, carrega e analisa o BU
 ├── comparar_turnos.py      # 1º × 2º turno por seção e por urna, com as predições registradas
+├── correspondencias.py     # correspondências esperadas/efetivadas do TSE: urna física por seção; mesma urna 1t→2t e P4 provisório
 ├── requirements.txt
 ├── docs/
 │   ├── METODOLOGIA.md      # layout, testes, critérios, limiares, mensagens do log
@@ -123,6 +124,8 @@ python aguardar_2t.py --once
 ```
 
 Resultados já publicados do 2º turno (logs, antes do BU): [`out/2t/logs_rep/RELATORIO.md`](out/2t/logs_rep/RELATORIO.md) (as mesmas 1.725 urnas do 1º turno) e [`out/2t/logs_brasil/RELATORIO.md`](out/2t/logs_brasil/RELATORIO.md) (varredura nacional, 499.177 urnas). Em resumo: a hipótese não se sustenta de novo, o encerramento tardio do Nordeste desapareceu com a cédula de um cargo, e Bom Lugar não repetiu.
+
+Enquanto o BU do 2º turno não sai, a correspondência esperada do TSE (publicada em 24/10) diz qual urna física foi designada a cada seção, o que permitiu verificar provisoriamente a predição P4 (persistência da taxa manual na mesma urna) com a taxa manual dos logs: [`out/2t/comparacao/RELATORIO_CORRESP.md`](out/2t/comparacao/RELATORIO_CORRESP.md). 99,7% das seções votam na mesma urna nos dois turnos; a taxa manual de uma seção no 1º turno prevê a do 2º com r ≈ 0,8 tanto na mesma urna quanto em urna trocada, ou seja, ela é uma propriedade do eleitorado da seção, não do dia nem da mesa.
 
 ## Dados
 

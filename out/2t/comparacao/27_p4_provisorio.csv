@@ -1,0 +1,2 @@
+id,predicao,n_mesma,corr_mesma,spearman_mesma,n_trocada,corr_trocada,spearman_trocada,ok
+"P4 (provisório, logs + correspondência esperada)","corr(tx manual 1t, 2t) > 0,5 nas urnas mantidas e maior que nas trocadas",495790,0.821,0.794,1451,0.458,0.797,True

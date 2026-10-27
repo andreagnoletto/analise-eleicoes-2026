@@ -22,6 +22,7 @@ O 2º turno é uma **segunda medição dos mesmos 499 mil pontos, em outro dia, 
 | BU | `bweb_1t_<UF>_051020261403.zip` | `bweb_2t_<UF>_<DDMMAAAAHHMM>.zip`; carimbo desconhecido até a publicação. Em 2022 saiu em 31/10 15:35 (D+1); em 2024 em 28/10 10:46 (D+1) |
 | Logs | `arquivo-urna/3220/dados/...` | `arquivo-urna/3221/dados/...`, `o03221<uf><mun><zona><sec>-log.jez`; aparecem progressivamente na noite da eleição |
 | Cargos no BU | Presidente, Governador, Senador, Dep. Federal, Dep. Estadual/Distrital | Presidente (todas as UFs); Governador (UFs com 2º turno) |
+| Correspondências esperadas/efetivadas (acrescentado em 27/10) | `CESP_1t_<UF>_041020261259.zip` (esperada, dia), `CEFT_1t_<UF>_051020261049.zip` (efetivada, D+1 10h49, 3 h antes do BU) | `CESP_2t_<UF>_241020261231.zip` (esperada, véspera); efetivada **ainda não publicada** em 27/10. Dá `NR_URNA` por seção: é o que `mesma_urna` e P4 precisam, e a efetivada do 2º turno é o aviso prévio do BU |
 
 Mesmas regras do 1º turno: SHA-512 conferido em todo download (falhou → para); `data/` nunca alterado depois de baixado; horários no relógio local da urna (AC 15h, AM/MT/MS/RO/RR 16h, demais 17h); sem Lei de Benford; anomalia ≠ fraude, com explicação inocente e o que a descartaria para cada achado.
 
@@ -82,6 +83,8 @@ Derivadas dos mecanismos identificados no 1º turno. Uma predição que falhe ob
 | L3 | Taxa manual por modelo se repete (UE2013 > UE2015 > UE2020 ≈ UE2022), diferença < 2 pp | hardware | |
 | L4 | Mediana por UF da razão manual/votos na última hora ≤ 1 | sem concentração no fim | o 2º turno teria concentração |
 | L5 | Bom Lugar, locais 1104, 1120, 1198, 1171: razão < 0,8 de novo (prática estável) **ou** > 1 (foi do dia). Registrado sem direção | | ambos os resultados são informativos |
+
+**Adendo de 27/10 (antes do BU):** P4 foi verificada provisoriamente com a correspondência *esperada* do 2º turno e a taxa manual dos logs (`correspondencias.py`; `out/2t/comparacao/RELATORIO_CORRESP.md`). O critério registrado é atendido (r = 0,82 na mesma urna, 0,46 na trocada), mas a correlação de postos é igual nos dois grupos (ρ 0,79 e 0,80) e, retirados os dias de falha total do leitor, Pearson fica em 0,83 e 0,78. Leitura honesta: a persistência vem do **eleitorado da seção**, não do leitor; o leitor pesa só nos extremos (falha total repete em 48% das mesmas urnas e em 0 de 5 trocadas; 11‰ nas UE2013, ~0 nas demais). O mecanismo escrito na tabela ("leitor é a causa dominante") estava errado; a predição em si não. Será recalculada com o BU (urna efetivada e taxa manual do BU).
 
 ## 5. Saídas novas (`out/2t/comparacao/`)
 
