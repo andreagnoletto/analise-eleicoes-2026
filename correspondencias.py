@@ -10,7 +10,7 @@ Uso, enquanto o BU do 2º turno não sai:
 A "esperada" do 2º turno é a urna planejada; a "efetivada" (ainda não publicada) é a que de fato votou. No 1º turno as duas
 diferem em poucas seções (contingência); o item 26 mede essa diferença para calibrar o quanto o provisório pode errar.
 """
-import argparse, hashlib, os, sys, zipfile
+import argparse, hashlib, os, sys, time, zipfile
 from pathlib import Path
 os.environ.setdefault("TURNO", "2")
 import requests, duckdb, pandas as pd, numpy as np
@@ -23,7 +23,10 @@ CKAN = "https://dadosabertos.tse.jus.br/api/3/action/package_show"
 DATASETS = ["resultados-2026-correspondencias-esperadas-e-efetivadas-2-turno",
             "resultados-2026-correspondencias-esperadas-e-efetivadas-1-turno"]
 # carimbos: esperada 2t (véspera), efetivada 1t (D+1), esperada 1t (dia da eleição; a de 03/10 é a versão anterior)
-ARQUIVOS = {"cesp_2t": "CESP_2t_{uf}_241020261231.zip", "ceft_1t": "CEFT_1t_{uf}_051020261049.zip", "cesp_1t": "CESP_1t_{uf}_041020261259.zip"}
+ARQUIVOS = {"cesp_2t": "CESP_2t_{uf}_241020261231.zip",      # esperada 2t, véspera
+            "cesp_2t_dia": "CESP_2t_{uf}_251020261345.zip",  # esperada 2t, dia da eleição
+            "ceft_2t": "CEFT_2t_{uf}_261020261201.zip",      # efetivada 2t (gerada 26/10 12h01; no portal em 27/10 13h24)
+            "ceft_1t": "CEFT_1t_{uf}_051020261049.zip", "cesp_1t": "CESP_1t_{uf}_041020261259.zip"}
 UFS = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO", "ZZ"]
 H = {"User-Agent": "Mozilla/5.0"}
 K_SQL = ("lower(SG_UF) || '-' || lpad(CAST(CAST(CD_MUNICIPIO AS INT) AS VARCHAR), 5, '0') || '-' || "
@@ -33,7 +36,8 @@ K_SQL = ("lower(SG_UF) || '-' || lpad(CAST(CAST(CD_MUNICIPIO AS INT) AS VARCHAR)
 def urls_ckan():
     urls = {}
     for ds in DATASETS:
-        j = requests.get(CKAN, params={"id": ds}, headers=H, timeout=60).json()["result"]
+        # a API é servida por um cache (max-age 3600; em 27/10 devolveu versão de 24/10 por horas): parâmetro anticache
+        j = requests.get(CKAN, params={"id": ds, "nocache": int(time.time())}, headers={**H, "Cache-Control": "no-cache"}, timeout=60).json()["result"]
         for x in j["resources"]:
             urls[x["url"].rsplit("/", 1)[-1]] = x["url"]
     return urls
@@ -64,7 +68,7 @@ def download():
             if esperado != obtido:
                 sys.exit(f"[download] HASH FALHOU em {nome}: esperado {esperado[:16]}…, obtido {obtido[:16]}…  PARANDO.")
             print(f"[download] {nome} {((RAW / nome).stat().st_size / 1e6):.1f} MB hash OK", flush=True)
-    print("[download] 84 arquivos conferidos")
+    print(f"[download] {len(ARQUIVOS) * len(UFS)} arquivos conferidos")
 
 
 def load():
@@ -78,7 +82,9 @@ def load():
     if DB.exists():
         DB.unlink()
     con = duckdb.connect(str(DB))
-    for tab, pat in [("cesp_2t", "csec_2t_*.csv"), ("ccont_2t", "ccont_2t_*.csv"), ("ceft_1t", "ceft_1t_*.csv"), ("cesp_1t", "csec_1t_*.csv")]:
+    for tab, pat in [("cesp_2t", "csec_2t_*_241020261231.csv"), ("ccont_2t", "ccont_2t_*_241020261231.csv"),
+                     ("cesp_2t_dia", "csec_2t_*_251020261345.csv"), ("ccont_2t_dia", "ccont_2t_*_251020261345.csv"),
+                     ("ceft_2t", "ceft_2t_*.csv"), ("ceft_1t", "ceft_1t_*.csv"), ("cesp_1t", "csec_1t_*.csv")]:
         con.execute(f"""CREATE TABLE {tab} AS SELECT * FROM read_csv('{(CSV / pat).as_posix()}', delim=';', header=true, quote='"',
                         all_varchar=true, encoding='latin-1', union_by_name=true)""")
         n, ufs = con.execute(f"SELECT count(*), count(DISTINCT SG_UF) FROM {tab}").fetchone()
@@ -95,7 +101,9 @@ def comparar():
         WHERE DS_CARGO_PERGUNTA ILIKE 'Presidente%' AND CD_TIPO_URNA = '1'""")
     con.execute(f"CREATE TABLE e1 AS SELECT {K_SQL} k, SG_UF, NR_URNA_ESPERADA urna_esp1, NR_URNA_EFETIVADA urna_ef1, CD_ORIGEM_VOTO, TP_DIVERGENCIA FROM c.ceft_1t")
     con.execute(f"CREATE TABLE p1 AS SELECT {K_SQL} k, NR_URNA_ESPERADA urna_esp1_dia FROM c.cesp_1t")
-    con.execute(f"CREATE TABLE p2 AS SELECT {K_SQL} k, SG_UF, NR_URNA_ESPERADA urna_esp2, DT_CARGA_URNA_ESPERADA dt_carga2 FROM c.cesp_2t")
+    con.execute(f"""CREATE TABLE p2 AS SELECT {K_SQL} k, SG_UF, NR_URNA_ESPERADA urna_esp2, NR_URNA_EFETIVADA urna_ef2,
+                    CD_ORIGEM_VOTO origem2, TP_DIVERGENCIA div2 FROM c.ceft_2t""")
+    con.execute(f"CREATE TABLE v2 AS SELECT {K_SQL} k, NR_URNA_ESPERADA urna_esp2_vesp FROM c.cesp_2t")
     # 26a validação: efetivada (arquivo de correspondência) × NR_URNA_EFETIVADA do BU, 1º turno
     v = con.execute("""
         SELECT b.SG_UF uf, count(*) secoes_bu, count(e.k) com_corresp, sum(e.urna_ef1 = b.urna_bu) mesma_urna_que_bu,
@@ -111,10 +119,22 @@ def comparar():
     print(f"[26] 1t: {int(br.secoes_bu):,} seções no BU, {int(br.com_corresp):,} com correspondência, "
           f"{br.pct_mesma_urna_que_bu}% mesma urna que o BU; esperada≠efetivada {br.pct_esperada_ne_efetivada}% (véspera) / "
           f"{br.pct_esperada_dia_ne_efetivada}% (dia); origem≠urna {int(br.origem_nao_urna):,}")
-    # 26b mesma urna 1t (efetivada, BU) → 2t (esperada), provisório
+    # 26c o mesmo para o 2º turno: esperada (véspera e dia) × efetivada, origem do voto
+    v2 = con.execute("""
+        SELECT p.SG_UF uf, count(*) secoes, sum(v.urna_esp2_vesp <> p.urna_ef2) esperada_vesp_ne_efetivada,
+               sum(p.urna_esp2 <> p.urna_ef2) esperada_dia_ne_efetivada, sum(p.origem2 <> 'U') origem_nao_urna
+        FROM p2 p LEFT JOIN v2 v USING (k) GROUP BY 1 ORDER BY 1""").df()
+    tot = v2.drop(columns="uf").sum(); tot["uf"] = "BR"; v2 = pd.concat([v2, tot.to_frame().T], ignore_index=True)
+    v2["pct_esperada_vesp_ne_efetivada"] = (100 * v2.esperada_vesp_ne_efetivada / v2.secoes).astype(float).round(2)
+    v2["pct_esperada_dia_ne_efetivada"] = (100 * v2.esperada_dia_ne_efetivada / v2.secoes).astype(float).round(2)
+    v2.to_csv(OUT / "26_corresp_validacao_2t.csv", index=False)
+    br2 = v2[v2.uf == "BR"].iloc[0]
+    print(f"[26] 2t: {int(br2.secoes):,} seções na efetivada; esperada≠efetivada {br2.pct_esperada_vesp_ne_efetivada}% (véspera) / "
+          f"{br2.pct_esperada_dia_ne_efetivada}% (dia); origem≠urna {int(br2.origem_nao_urna):,}")
+    # 26b mesma urna 1t (efetivada, BU) → 2t (efetivada, arquivo de correspondência)
     con.execute("""CREATE TABLE m AS
-        SELECT coalesce(b.k, p.k) k, coalesce(b.SG_UF, p.SG_UF) SG_UF, b.urna_bu, p.urna_esp2, p.dt_carga2,
-               b.k IS NOT NULL em_1t, p.k IS NOT NULL em_2t, (b.urna_bu = p.urna_esp2) mesma_urna
+        SELECT coalesce(b.k, p.k) k, coalesce(b.SG_UF, p.SG_UF) SG_UF, b.urna_bu, p.urna_esp2, p.urna_ef2, p.origem2,
+               b.k IS NOT NULL em_1t, p.k IS NOT NULL em_2t, (b.urna_bu = p.urna_ef2) mesma_urna
         FROM bu1 b FULL OUTER JOIN p2 p USING (k)""")
     mu = con.execute("""
         SELECT SG_UF uf, sum(em_1t) secoes_1t, sum(em_2t) secoes_2t, sum(em_1t AND em_2t) pareadas,
@@ -126,7 +146,7 @@ def comparar():
     mu.to_csv(OUT / "26_mesma_urna_1t_2t_provisorio_uf.csv", index=False)
     br = mu[mu.uf == "BR"].iloc[0]
     print(f"[26] 1t→2t: {int(br.pareadas):,} seções pareadas ({int(br.so_1t):,} só no 1t, {int(br.so_2t):,} só no 2t); "
-          f"mesma urna física (esperada) em {br.pct_mesma_urna}%")
+          f"mesma urna física (efetivada nos dois turnos) em {br.pct_mesma_urna}%")
     # urnas do 2t que eram de outra seção no 1t / que não votaram no 1t (contingência, reserva, nova)
     con.execute("CREATE TABLE u1 AS SELECT urna_bu urna, min(k) k1 FROM bu1 GROUP BY 1")
     orig = con.execute("""
@@ -134,9 +154,9 @@ def comparar():
                     WHEN u1.urna IS NOT NULL THEN 'outra seção no 1t'
                     ELSE 'não votou no 1t (contingência/reserva/nova)' END origem_urna_2t, count(*) n,
                round(100.0*count(*)/sum(count(*)) OVER (), 2) pct
-        FROM m LEFT JOIN u1 ON u1.urna = m.urna_esp2 WHERE em_1t AND em_2t GROUP BY 1 ORDER BY n DESC""").df()
+        FROM m LEFT JOIN u1 ON u1.urna = m.urna_ef2 WHERE em_1t AND em_2t GROUP BY 1 ORDER BY n DESC""").df()
     orig.to_csv(OUT / "26_origem_urna_2t.csv", index=False)
-    print("[26] origem da urna esperada do 2t:", "; ".join(f"{r.origem_urna_2t} {r.pct}%" for r in orig.itertuples()))
+    print("[26] origem da urna efetivada do 2t:", "; ".join(f"{r.origem_urna_2t} {r.pct}%" for r in orig.itertuples()))
     # 27 P4 provisório pelos logs: corr(tx_manual 1t, tx_manual 2t) por mesma urna × trocada
     con.execute(f"""CREATE TABLE l AS
         SELECT m.k, m.SG_UF, m.mesma_urna, a.modelo modelo_1t, b.modelo modelo_2t,

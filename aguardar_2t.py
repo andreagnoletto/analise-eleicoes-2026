@@ -44,12 +44,13 @@ def checar_bu(sess):
     """-> (stamp, ufs) ou (None, set()). Lê a API CKAN; se falhar, raspa a página HTML."""
     texto = ""
     try:
-        j = sess.get(CKAN, timeout=60).json()
+        # a API é servida por um cache (Cache-Control max-age=3600; em 27/10 devolveu versão de 24/10 por horas): parâmetro anticache
+        j = sess.get(CKAN, params={"nocache": int(datetime.now().timestamp())}, headers={"Cache-Control": "no-cache"}, timeout=60).json()
         texto = " ".join(r.get("url", "") + " " + r.get("name", "") for r in j["result"]["resources"])
     except Exception as e:
         log(f"  CKAN indisponível ({type(e).__name__}); tentando a página HTML")
         try:
-            texto = sess.get(cfg.DATASET_URL, timeout=60).text
+            texto = sess.get(cfg.DATASET_URL, params={"nocache": int(datetime.now().timestamp())}, headers={"Cache-Control": "no-cache"}, timeout=60).text
         except Exception as e2:
             log(f"  página HTML indisponível ({type(e2).__name__})")
             return None, set()

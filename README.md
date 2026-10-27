@@ -125,7 +125,7 @@ python aguardar_2t.py --once
 
 Resultados já publicados do 2º turno (logs, antes do BU): [`out/2t/logs_rep/RELATORIO.md`](out/2t/logs_rep/RELATORIO.md) (as mesmas 1.725 urnas do 1º turno) e [`out/2t/logs_brasil/RELATORIO.md`](out/2t/logs_brasil/RELATORIO.md) (varredura nacional, 499.177 urnas). Em resumo: a hipótese não se sustenta de novo, o encerramento tardio do Nordeste desapareceu com a cédula de um cargo, e Bom Lugar não repetiu.
 
-Enquanto o BU do 2º turno não sai, a correspondência esperada do TSE (publicada em 24/10) diz qual urna física foi designada a cada seção, o que permitiu verificar provisoriamente a predição P4 (persistência da taxa manual na mesma urna) com a taxa manual dos logs: [`out/2t/comparacao/RELATORIO_CORRESP.md`](out/2t/comparacao/RELATORIO_CORRESP.md). 99,7% das seções votam na mesma urna nos dois turnos; a taxa manual de uma seção no 1º turno prevê a do 2º com r ≈ 0,8 tanto na mesma urna quanto em urna trocada, ou seja, ela é uma propriedade do eleitorado da seção, não do dia nem da mesa.
+Enquanto o BU do 2º turno não sai, as correspondências esperadas e efetivadas do TSE (publicadas entre 24 e 27/10) dizem qual urna física votou em cada seção, o que permitiu verificar a predição P4 (persistência da taxa manual na mesma urna) com a taxa manual dos logs: [`out/2t/comparacao/RELATORIO_CORRESP.md`](out/2t/comparacao/RELATORIO_CORRESP.md). 99,1% das seções votaram na mesma urna nos dois turnos; a taxa manual de uma seção no 1º turno prevê a do 2º com ρ ≈ 0,8 tanto na mesma urna quanto em urna trocada, ou seja, ela é uma propriedade do eleitorado da seção, não do dia nem da mesa. O leitor pesa só nos extremos: a falha total do sensor (UE2013, 11‰) repete em 62% das urnas mantidas e em 12% das trocadas.
 
 ## Dados
 
