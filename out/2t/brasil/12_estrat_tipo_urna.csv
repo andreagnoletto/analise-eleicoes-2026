@@ -1,0 +1,7 @@
+regiao,estrato,n,media_manual,media_comp,pct_tardia_30min,suspeitas_orig,por_mil_orig,suspeitas_cal,por_mil_cal
+N,Apurada,43769,0.0553,0.7863,0.07,15.0,0.343,7.0,0.16
+NE,Apurada,140828,0.0737,0.8343,1.56,45.0,0.32,22.0,0.156
+CO,Apurada,38048,0.0649,0.799,0.13,3.0,0.079,1.0,0.026
+SE,Apurada,203237,0.0658,0.7973,2.61,30.0,0.148,8.0,0.039
+S,Apurada,72015,0.0791,0.8188,0.02,14.0,0.194,3.0,0.042
+ZZ,Apurada,1308,0.0,0.4184,0.47,0.0,0.0,0.0,0.0

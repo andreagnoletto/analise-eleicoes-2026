@@ -573,3 +573,33 @@
 21:33:08 AVISO: data\2t\bu2026_2t.duckdb não existe; usando a lista de seções do 1º turno (data\bu2026.duckdb); campos bu_* ficam nulos
 21:33:19 [retry] 406 seções em falhas.csv, 16 conexões
 21:34:05 [retry] recuperadas 377; ainda falhando 29
+22:47:55 [anexar_bu] secoes_AC.parquet: 2270 urnas, sem BU 0; comp bate 2270/2270, manual bate 2260/2270
+22:47:55 [anexar_bu] secoes_AL.parquet: 7101 urnas, sem BU 0; comp bate 7101/7101, manual bate 7061/7101
+22:47:55 [anexar_bu] secoes_AM.parquet: 8157 urnas, sem BU 0; comp bate 8157/8157, manual bate 8129/8157
+22:47:55 [anexar_bu] secoes_AP.parquet: 1912 urnas, sem BU 0; comp bate 1912/1912, manual bate 1908/1912
+22:47:55 [anexar_bu] secoes_BA.parquet: 35476 urnas, sem BU 0; comp bate 35473/35476, manual bate 35259/35476
+22:47:55 [anexar_bu] secoes_CE.parquet: 23765 urnas, sem BU 0; comp bate 23765/23765, manual bate 23669/23765
+22:47:55 [anexar_bu] secoes_DF.parquet: 6969 urnas, sem BU 0; comp bate 6969/6969, manual bate 6935/6969
+22:47:56 [anexar_bu] secoes_ES.parquet: 9844 urnas, sem BU 0; comp bate 9843/9844, manual bate 9744/9844
+22:47:56 [anexar_bu] secoes_GO.parquet: 15686 urnas, sem BU 0; comp bate 15686/15686, manual bate 15634/15686
+22:47:56 [anexar_bu] secoes_MA.parquet: 18093 urnas, sem BU 0; comp bate 18092/18093, manual bate 18016/18093
+22:47:56 [anexar_bu] secoes_MG.parquet: 52062 urnas, sem BU 0; comp bate 52061/52062, manual bate 51657/52062
+22:47:56 [anexar_bu] secoes_MS.parquet: 7106 urnas, sem BU 0; comp bate 7106/7106, manual bate 7090/7106
+22:47:56 [anexar_bu] secoes_MT.parquet: 8287 urnas, sem BU 0; comp bate 8287/8287, manual bate 8257/8287
+22:47:56 [anexar_bu] secoes_PA.parquet: 20827 urnas, sem BU 0; comp bate 20827/20827, manual bate 20768/20827
+22:47:56 [anexar_bu] secoes_PB.parquet: 10712 urnas, sem BU 0; comp bate 10711/10712, manual bate 10667/10712
+22:47:56 [anexar_bu] secoes_PE.parquet: 21418 urnas, sem BU 0; comp bate 21418/21418, manual bate 21255/21418
+22:47:56 [anexar_bu] secoes_PI.parquet: 10225 urnas, sem BU 0; comp bate 10224/10225, manual bate 10183/10225
+22:47:56 [anexar_bu] secoes_PR.parquet: 27142 urnas, sem BU 0; comp bate 27142/27142, manual bate 27084/27142
+22:47:56 [anexar_bu] secoes_retry.parquet: 377 urnas, sem BU 0; comp bate 377/377, manual bate 377/377
+22:47:57 [anexar_bu] secoes_RJ.parquet: 37674 urnas, sem BU 0; comp bate 37674/37674, manual bate 37396/37674
+22:47:57 [anexar_bu] secoes_RN.parquet: 8115 urnas, sem BU 0; comp bate 8115/8115, manual bate 8068/8115
+22:47:57 [anexar_bu] secoes_RO.parquet: 4698 urnas, sem BU 0; comp bate 4698/4698, manual bate 4688/4698
+22:47:57 [anexar_bu] secoes_RR.parquet: 1516 urnas, sem BU 0; comp bate 1516/1516, manual bate 1512/1516
+22:47:57 [anexar_bu] secoes_RS.parquet: 27547 urnas, sem BU 0; comp bate 27546/27547, manual bate 27409/27547
+22:47:57 [anexar_bu] secoes_SC.parquet: 17303 urnas, sem BU 0; comp bate 17303/17303, manual bate 17240/17303
+22:47:57 [anexar_bu] secoes_SE.parquet: 5923 urnas, sem BU 0; comp bate 5923/5923, manual bate 5911/5923
+22:47:57 [anexar_bu] secoes_SP.parquet: 103655 urnas, sem BU 0; comp bate 103655/103655, manual bate 103231/103655
+22:47:57 [anexar_bu] secoes_TO.parquet: 4384 urnas, sem BU 0; comp bate 4384/4384, manual bate 4380/4384
+22:47:57 [anexar_bu] secoes_ZZ.parquet: 933 urnas, sem BU 0; comp bate 933/933, manual bate 933/933
+22:47:57 [anexar_bu] total: 499177 urnas, sem BU 0; comp bate 499168 (99.998%), manual bate 496721

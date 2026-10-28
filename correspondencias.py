@@ -25,7 +25,7 @@ DATASETS = ["resultados-2026-correspondencias-esperadas-e-efetivadas-2-turno",
 # carimbos: esperada 2t (véspera), efetivada 1t (D+1), esperada 1t (dia da eleição; a de 03/10 é a versão anterior)
 ARQUIVOS = {"cesp_2t": "CESP_2t_{uf}_241020261231.zip",      # esperada 2t, véspera
             "cesp_2t_dia": "CESP_2t_{uf}_251020261345.zip",  # esperada 2t, dia da eleição
-            "ceft_2t": "CEFT_2t_{uf}_261020261201.zip",      # efetivada 2t (gerada 26/10 12h01; no portal em 27/10 13h24)
+            "ceft_2t": "CEFT_2t_{uf}_261020261201.zip",      # efetivada 2t (gerada 26/10 12h01; no portal em 27/10 entre 9h50 e 10h24 de Brasília; o catálogo registra horários em UTC)
             "ceft_1t": "CEFT_1t_{uf}_051020261049.zip", "cesp_1t": "CESP_1t_{uf}_041020261259.zip"}
 UFS = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO", "ZZ"]
 H = {"User-Agent": "Mozilla/5.0"}

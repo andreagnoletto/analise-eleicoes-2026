@@ -1,0 +1,6 @@
+id,predicao,valor,ok
+P1,tempo de cédula menor -> encerramento tardio (>30 min) cai em TODAS as regiões,"N: 26.2%→0.1%, NE: 36.4%→1.6%, CO: 10.4%→0.1%, SE: 7.7%→2.6%, S: 3.1%→0.0%",True
+P2,"NE e N continuam fechando mais tarde que o Sul (mediana), mas a diferença absoluta encolhe",NE−S mediana: 12.0 → 0.0 min,False
+P3,"taxa manual nacional estável (±1,5 pp): é propriedade do leitor e do eleitorado, não do dia",6.86% → 6.90%,True
+P4,"taxa manual persiste na mesma urna física: corr(1t,2t) > 0,5 em urnas mantidas, e maior que em urnas trocadas",mesma urna 0.804; trocada 0.542,True
+P5,"seções com Δmanual e Δcomparecimento conjuntamente anômalos: ≤ 0,2‰ e sem concentração regional (nenhuma região > 2× a média)","89 seções (0.180‰); por mil por região: CO: 0.026, N: 0.139, NE: 0.279, S: 0.126, SE: 0.168",True

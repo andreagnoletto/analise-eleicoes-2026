@@ -23,3 +23,6 @@ out/2t/aguardar.log
 # Temporários da varredura e arquivos por habilitação do 2º turno (regenerados)
 out/**/_tmp_*.dat
 out/2t/logs_rep/01_eleitores.csv
+
+# Seções pareadas dos dois turnos (28 MB); regenerado por `comparar_turnos.py bu`
+out/2t/comparacao/21_secoes.parquet

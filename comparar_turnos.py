@@ -124,6 +124,10 @@ def comparar_bu(db1, db2, out):
 
     # 24. predições registradas (docs/ESCOPO_2T.md §4)
     r = reg.set_index("regiao"); b = nac.iloc[0]
+    # P5: por mil nacional e por região (zd = seções elegíveis: fora ZZ, aptos >= 100 nos dois turnos)
+    p5_reg = con.execute("SELECT regiao, 1000.0*sum(flag_delta::INT)/count(*) FROM zd GROUP BY 1 ORDER BY 1").fetchall()
+    p5_tot = 1000.0 * len(fl) / con.execute("SELECT count(*) FROM zd").fetchone()[0]
+    p5_ok = bool(p5_tot <= 0.2 and max(v for _, v in p5_reg) <= 2 * p5_tot)
     tem_ne_s = {"NE", "S"} <= set(r.index)
     pred = [
         dict(id="P1", predicao="tempo de cédula menor -> encerramento tardio (>30 min) cai em TODAS as regiões",
@@ -140,9 +144,8 @@ def comparar_bu(db1, db2, out):
              ok=bool(pers_br[pers_br.mesma_urna == True].corr_manual.mean() > 0.5 and
                      pers_br[pers_br.mesma_urna == True].corr_manual.mean() > pers_br[pers_br.mesma_urna == False].corr_manual.mean())),
         dict(id="P5", predicao="seções com Δmanual e Δcomparecimento conjuntamente anômalos: ≤ 0,2‰ e sem concentração regional (nenhuma região > 2× a média)",
-             valor=f"{len(fl)} seções; por mil por região: " + ", ".join(f"{k}: {v:.3f}" for k, v in
-                   con.execute("SELECT regiao, 1000.0*sum(flag_delta::INT)/count(*) FROM zd GROUP BY 1 ORDER BY 1").fetchall()),
-             ok=None),
+             valor=f"{len(fl)} seções ({p5_tot:.3f}‰); por mil por região: " + ", ".join(f"{k}: {v:.3f}" for k, v in p5_reg),
+             ok=p5_ok),
     ]
     pred = pd.DataFrame(pred); pred.to_csv(out / "24_predicoes.csv", index=False)
     print("\n[24] predições:\n", pred.to_string(index=False))

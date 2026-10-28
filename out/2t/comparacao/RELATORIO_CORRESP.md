@@ -1,6 +1,6 @@
 # Correspondências de urna: mesma urna física 1º → 2º turno e a predição P4, antes do BU
 
-Escrito em 27/10/2026, D+2 do 2º turno, com o BU do 2º turno ainda não publicado. Primeira versão pela manhã com a correspondência *esperada*; refeito à tarde com a *efetivada*, publicada às 13h24. Reproduzível com:
+Escrito em 27/10/2026, D+2 do 2º turno, com o BU do 2º turno ainda não publicado. Primeira versão pela manhã com a correspondência *esperada*; refeito com a *efetivada*, que entrou no portal entre 9h50 e 10h24 (horário de Brasília; o catálogo registra 12h50 a 13h24 em UTC). Reproduzível com:
 
 ```bash
 python correspondencias.py download   # 140 arquivos, SHA-512 conferido um a um
@@ -18,9 +18,9 @@ O TSE publica, por UF, a **correspondência esperada** (que urna, pelo número d
 | `CEFT_1t_<UF>_051020261049` | 1º | 05/10 10h49 | efetivada (esperada + efetivada + origem do voto) | 499.207 |
 | `CESP_2t_<UF>_241020261231` | 2º | 24/10 12h31 | esperada, véspera | 499.166 |
 | `CESP_2t_<UF>_251020261345` | 2º | 25/10 13h45 | esperada, dia da eleição | 499.178 |
-| `CEFT_2t_<UF>_261020261201` | 2º | 26/10 12h01 (no portal em 27/10 13h24) | efetivada | 499.207 |
+| `CEFT_2t_<UF>_261020261201` | 2º | 26/10 12h01 (no portal em 27/10, 9h50 a 10h24) | efetivada | 499.207 |
 
-No 1º turno a efetivada saiu 3 h 14 antes do BU (10h49 → 14h03). No 2º turno ela foi gerada em 26/10 ao meio-dia, mas só apareceu no portal em 27/10 à tarde, e o BU ainda não saiu às 15h30 de 27/10.
+No 1º turno a efetivada saiu 3 h 14 antes do BU (10h49 → 14h03). No 2º turno ela foi gerada em 26/10 ao meio-dia, mas só apareceu no portal na manhã de 27/10, e o BU só entrou no portal às 16h de 27/10 (ver `RELATORIO.md`).
 
 **Nota operacional.** A API CKAN do portal (`package_show`) é servida por um cache (`Cache-Control: max-age=3600`) que em 27/10 devolveu por horas uma versão de 24/10 do conjunto, enquanto a busca (`package_search`) e a página HTML já mostravam os arquivos novos. Todo acesso à API em `aguardar_2t.py` e `correspondencias.py` passou a usar parâmetro anticache e `Cache-Control: no-cache`; o vigia foi reiniciado com a correção.
 
