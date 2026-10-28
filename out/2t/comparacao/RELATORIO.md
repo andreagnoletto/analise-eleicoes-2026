@@ -101,6 +101,31 @@ Há cerca de três vezes mais seções com os dois saltos juntos do que o acaso 
 
 Lauro de Freitas é um dia de leitor morto numa urna de contingência (69 % de manuais é falha de sensor, não conduta). Belo Horizonte z39 s168 é o inverso: no 1º turno a urna não registrou nenhuma habilitação manual, no 2º outra urna registrou 9 %, que é a taxa normal da cidade; a anomalia é o zero do 1º turno.
 
+## 4b. A prorrogação até as 19h, vista com o BU
+
+No fim da tarde de 25/10 o STF prorrogou a votação até as 19h **nas seções ainda abertas**, a pedido da campanha de Lula, por restrições no transporte; TSE e TREs executaram em zonas específicas (fontes no item 6 de `../logs_brasil/RELATORIO.md`). Não foi um adiamento geral de duas horas: as demais seções fecharam no horário. O que os logs registram nessas urnas:
+
+| | |
+|---|---|
+| Urnas encerradas 110 min ou mais após o horário (≈ 19h) | **6.729**: RJ 2.984, SP 1.651, BA 980, PE 691, PB 311, SE 52 |
+| Votos nessas urnas após o horário previsto | **4.766** (mediana **0** por urna; p90 2; máximo 38) |
+| Urnas com 20 ou mais votos nesse período | 2 (Ouro Branco/AL z50 s79, 38 votos; São Miguel das Matas/BA z36 s199, 22) |
+| Habilitações manuais nesses votos | 255 = **5,4 %** (taxa do dia nessas mesmas urnas: 6,5 %) |
+| Para comparação: votos após o horário em urnas que fecharam com menos de 30 min de atraso | 25.897 (a fila das 17h; 8,6 % manuais) |
+
+Com o BU, as seções prorrogadas comparadas às demais do **mesmo município** (seções com aptos ≥ 100, municípios com os dois grupos):
+
+| | prorrogadas (6.707) | demais (106.487) |
+|---|---|---|
+| comparecimento 1t → 2t | 77,6 % → 80,6 % | 78,8 % → 81,2 % |
+| Δcomparecimento, relativo ao município | +0,18 pp | 0 |
+| Δmanual, relativo ao município | −0,01 pp | 0 |
+| Δfatia de Lula entre os finalistas, relativo ao município | **−0,04 pp ± 0,03** | 0 |
+
+Por UF, o Δfatia relativo é RJ +0,29 ± 0,04 pp, SP −0,37 ± 0,06, BA −0,10 ± 0,06, PE −0,07 ± 0,07, PB −1,06 ± 0,11: sinais opostos entre UFs e magnitude de diferença entre bairros (as zonas prorrogadas são lugares específicos da cidade). As 28 urnas que receberam de 5 a 19 votos no período têm Δcomparecimento relativo de +1,3 pp (são esses votos) e Δfatia de +0,9 ± 0,4 pp, dentro do ruído para 28 urnas.
+
+Resumo: a prorrogação manteve 6,7 mil urnas abertas por até duas horas para receber, em mediana, zero votos. Não elevou a habilitação manual (5,4 %, abaixo da taxa do dia) e não moveu comparecimento nem voto dessas seções em relação ao município. É a aberração esperada de uma prorrogação decidida depois que as filas já tinham acabado, e só isso.
+
 ## 5. Votos (`25_votos_delta_uf.csv`)
 
 Para cada UF e cada finalista, correlação entre a variação da taxa manual e a variação da fatia do candidato nos votos nominais, bruta e dentro do município:
@@ -142,6 +167,7 @@ Comparecimento, manuais e inclinação política iguais em dois domingos diferen
 | NE com 0,279 ‰ nessas seções, 1,55× a média | NE tem maior taxa manual e maior salto de comparecimento (+1,7 pp); o critério é relativo ao município, mas a variância de Δ é maior onde o nível é maior | o mesmo teste de voto por UF: Δmanual × Δfatia entre −0,03 e +0,01 nas 9 UFs do NE |
 | 7 de 27 seções "suspeitas" do 1º turno repetem no 2º com os mesmos números | característica do eleitorado da seção | perfil da seção (fora dos dados abertos); deslocamento de voto entre turnos, que não ocorre |
 | Encerramento tardio sobrou em RJ, PE, BA, PB | prorrogação até as 19h pelo STF; totais por UF batem com os logs | explicado no relatório dos logs |
+| 6.729 urnas abertas até as 19h, mediana de 0 votos no período | prorrogação para seções ainda abertas, decidida quando as filas já tinham acabado | explicado: 5,4 % de manuais no período e nenhum deslocamento de comparecimento ou voto em relação ao município (seção 4b) |
 | Lauro de Freitas z180 s149: 219 manuais em 319 | falha total do sensor numa urna de contingência | caderno de ocorrências da seção |
 | Belo Horizonte z39 s168: 0 → 34 manuais | o zero do 1º turno é que é raro (sensor perfeito ou registro incompleto); 9 % é a taxa da cidade | log da urna do 1º turno |
 | P2 falhou: diferença NE–S foi a zero | a diferença do 1º turno era toda tempo de cédula | nada a descartar; a predição previa resíduo e não houve |
